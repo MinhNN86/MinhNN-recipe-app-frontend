@@ -638,16 +638,15 @@ saveCreateFoodBtn.addEventListener("click", function () {
   const loginAccountData = JSON.parse(localStorage.getItem("loginAccountData"));
   const name = document.getElementById("inputName").value.trim();
   const category = document.getElementById("inputCategory").value.trim();
-  const quantity = document.getElementById("inputQuantity").value.trim();
+  const quantity = document.getElementById("inputQuantity").value;
 
   // Lấy thông tin macronutrients
-  const energy =
-    parseFloat(document.getElementById("inputEnergy").value) || "0";
+  const energy = parseFloat(document.getElementById("inputEnergy").value) || 0;
   const carbohydrate =
-    parseFloat(document.getElementById("inputCarbohydrate").value) || "0";
-  const fat = parseFloat(document.getElementById("inputFat").value) || "0";
+    parseFloat(document.getElementById("inputCarbohydrate").value) || 0;
+  const fat = parseFloat(document.getElementById("inputFat").value) || 0;
   const protein =
-    parseFloat(document.getElementById("inputProtein").value) || "0";
+    parseFloat(document.getElementById("inputProtein").value) || 0;
 
   // Kiểm tra dữ liệu cơ bản
   if (!name || !category || !quantity) {
@@ -662,62 +661,57 @@ saveCreateFoodBtn.addEventListener("click", function () {
   // Tạo đối tượng micronutrients
   const micronutrients = {
     cholesterol:
-      parseFloat(document.getElementById("inputCholesterol").value) || "0",
-    fiber: parseFloat(document.getElementById("inputFiber").value) || "0",
-    sodium: parseFloat(document.getElementById("inputSodium").value) || "0",
-    water: parseFloat(document.getElementById("inputWater").value) || "0",
-    vitaminA: parseFloat(document.getElementById("inputVitaminA").value) || "0",
-    vitaminB6:
-      parseFloat(document.getElementById("inputVitaminB6").value) || "0",
+      parseFloat(document.getElementById("inputCholesterol").value) || 0,
+    fiber: parseFloat(document.getElementById("inputFiber").value) || 0,
+    sodium: parseFloat(document.getElementById("inputSodium").value) || 0,
+    water: parseFloat(document.getElementById("inputWater").value) || 0,
+    vitaminA: parseFloat(document.getElementById("inputVitaminA").value) || 0,
+    vitaminB6: parseFloat(document.getElementById("inputVitaminB6").value) || 0,
     vitaminB12:
-      parseFloat(document.getElementById("inputVitaminB12").value) || "0",
-    vitaminC: parseFloat(document.getElementById("inputVitaminC").value) || "0",
-    vitaminD: parseFloat(document.getElementById("inputVitaminD").value) || "0",
-    vitaminE: parseFloat(document.getElementById("inputVitaminE").value) || "0",
-    vitaminK: parseFloat(document.getElementById("inputVitaminK").value) || "0",
-    starch: parseFloat(document.getElementById("inputStarch").value) || "0",
-    lactose: parseFloat(document.getElementById("inputLactose").value) || "0",
-    alcohol: parseFloat(document.getElementById("inputAlcohol").value) || "0",
-    caffeine: parseFloat(document.getElementById("inputCaffeine").value) || "0",
-    sugars: parseFloat(document.getElementById("inputSugars").value) || "0",
-    calcium: parseFloat(document.getElementById("inputCalcium").value) || "0",
-    iron: parseFloat(document.getElementById("inputIron").value) || "0",
-    magnesium:
-      parseFloat(document.getElementById("inputMagnesium").value) || "0",
+      parseFloat(document.getElementById("inputVitaminB12").value) || 0,
+    vitaminC: parseFloat(document.getElementById("inputVitaminC").value) || 0,
+    vitaminD: parseFloat(document.getElementById("inputVitaminD").value) || 0,
+    vitaminE: parseFloat(document.getElementById("inputVitaminE").value) || 0,
+    vitaminK: parseFloat(document.getElementById("inputVitaminK").value) || 0,
+    starch: parseFloat(document.getElementById("inputStarch").value) || 0,
+    lactose: parseFloat(document.getElementById("inputLactose").value) || 0,
+    alcohol: parseFloat(document.getElementById("inputAlcohol").value) || 0,
+    caffeine: parseFloat(document.getElementById("inputCaffeine").value) || 0,
+    sugars: parseFloat(document.getElementById("inputSugars").value) || 0,
+    calcium: parseFloat(document.getElementById("inputCalcium").value) || 0,
+    iron: parseFloat(document.getElementById("inputIron").value) || 0,
+    magnesium: parseFloat(document.getElementById("inputMagnesium").value) || 0,
     phosphorus:
-      parseFloat(document.getElementById("inputPhosphorus").value) || "0",
-    potassium:
-      parseFloat(document.getElementById("inputPotassium").value) || "0",
-    zinc: parseFloat(document.getElementById("inputZinc").value) || "0",
-    copper: parseFloat(document.getElementById("inputCopper").value) || "0",
-    fluoride: parseFloat(document.getElementById("inputFluoride").value) || "0",
-    manganese:
-      parseFloat(document.getElementById("inputManganese").value) || "0",
-    selenium: parseFloat(document.getElementById("inputSelenium").value) || "0",
-    thiamin: parseFloat(document.getElementById("inputThiamin").value) || "0",
+      parseFloat(document.getElementById("inputPhosphorus").value) || 0,
+    potassium: parseFloat(document.getElementById("inputPotassium").value) || 0,
+    zinc: parseFloat(document.getElementById("inputZinc").value) || 0,
+    copper: parseFloat(document.getElementById("inputCopper").value) || 0,
+    fluoride: parseFloat(document.getElementById("inputFluoride").value) || 0,
+    manganese: parseFloat(document.getElementById("inputManganese").value) || 0,
+    selenium: parseFloat(document.getElementById("inputSelenium").value) || 0,
+    thiamin: parseFloat(document.getElementById("inputThiamin").value) || 0,
     riboflavin:
-      parseFloat(document.getElementById("inputRiboflavin").value) || "0",
-    niacin: parseFloat(document.getElementById("inputNiacin").value) || "0",
+      parseFloat(document.getElementById("inputRiboflavin").value) || 0,
+    niacin: parseFloat(document.getElementById("inputNiacin").value) || 0,
     pantothenicAcid:
-      parseFloat(document.getElementById("inputPantothenicAcid").value) || "0",
+      parseFloat(document.getElementById("inputPantothenicAcid").value) || 0,
     folateTotal:
-      parseFloat(document.getElementById("inputFolateTotal").value) || "0",
-    folicAcid:
-      parseFloat(document.getElementById("inputFolicAcid").value) || "0",
+      parseFloat(document.getElementById("inputFolateTotal").value) || 0,
+    folicAcid: parseFloat(document.getElementById("inputFolicAcid").value) || 0,
     fattyAcidsTrans:
-      parseFloat(document.getElementById("inputTransFattyAcids").value) || "0",
+      parseFloat(document.getElementById("inputTransFattyAcids").value) || 0,
     fattyAcidsSaturated:
       parseFloat(document.getElementById("inputSaturatedFattyAcids").value) ||
-      "0",
+      0,
     fattyAcidsMonounsaturated:
       parseFloat(
         document.getElementById("inputMonounsaturatedFattyAcids").value
-      ) || "0",
+      ) || 0,
     fattyAcidsPolyunsaturated:
       parseFloat(
         document.getElementById("inputPolyunsaturatedFattyAcids").value
-      ) || "0",
-    chloride: parseFloat(document.getElementById("inputChloride").value) || "0",
+      ) || 0,
+    chloride: parseFloat(document.getElementById("inputChloride").value) || 0,
   };
 
   let foodData = JSON.parse(localStorage.getItem("foodData")) || [];

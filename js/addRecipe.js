@@ -211,6 +211,7 @@ function renderFood(foodToRender) {
       getInputFoodData();
       renderFoodCard(inputIngredient);
       renderNutrient(inputIngredient);
+      renderFinalWeight(inputIngredient);
     });
   });
 }
@@ -254,6 +255,7 @@ function renderFoodCard(inputIngredient) {
         getInputFoodData();
         renderFoodCard(inputIngredient);
         renderNutrient(inputIngredient);
+        renderFinalWeight(inputIngredient);
       });
     });
 }
@@ -677,6 +679,20 @@ function renderNutrient(inputIngredient) {
   `;
 }
 
+function renderFinalWeight(inputIngredient) {
+  inputFood = inputIngredient.map((id) => {
+    return foodData.find((food) => food.id === id);
+  });
+  let inputFinalWeight = document.getElementById("inputFinalWeight");
+  let finalWeight = 0;
+  inputFood.forEach((food) => {
+    if (food) {
+      finalWeight += +food.quantity;
+    }
+  });
+  inputFinalWeight.value = finalWeight + " grams";
+}
+
 // render lựa chọn nutrient
 document.addEventListener("DOMContentLoaded", function () {
   const nutrients = ["Energy", "Fat", "Carbohydrate", "Protein"];
@@ -811,9 +827,7 @@ document.getElementById("pushRecipe").addEventListener("click", function () {
   let inputPreparationTime = document
     .getElementById("inputPreparationTime")
     .value.trim();
-  let inputFinalWeight = document
-    .getElementById("inputFinalWeight")
-    .value.trim();
+  let inputFinalWeight = document.getElementById("inputFinalWeight").value;
   let inputPortions = document.getElementById("inputPortions").value.trim();
   let inputCategory = document.getElementById("inputCategory").value.trim();
   let inputLinkImg = document.getElementById("inputLinkImg").value.trim();
@@ -825,7 +839,6 @@ document.getElementById("pushRecipe").addEventListener("click", function () {
     !inputDescription ||
     !inputTotalTime ||
     !inputPreparationTime ||
-    !inputFinalWeight ||
     !inputPortions ||
     !inputCategory ||
     !inputCookingMethod
