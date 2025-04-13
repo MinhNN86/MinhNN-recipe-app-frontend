@@ -80,6 +80,18 @@ document.addEventListener("DOMContentLoaded", function () {
   // render Author
   const loginAccountData = JSON.parse(localStorage.getItem("loginAccountData"));
   document.getElementById("inputAuthor").value = loginAccountData.username;
+
+  // không cho add Recipe khi chưa có food
+  if (!foodData || foodData.length === 0) {
+    Swal.fire({
+      icon: "error",
+      title: "Danh sách thực phẩm trống",
+      text: "Hãy thêm thực phẩm trong mục Food",
+    });
+    setTimeout(() => {
+      window.location.href = "food.html";
+    }, 2500);
+  }
 });
 
 //Đăng xuất tài khoản
@@ -249,10 +261,7 @@ function renderFoodCard(inputIngredient) {
 //hàm in dinh dưỡng
 function renderNutrient(inputIngredient) {
   if (inputIngredient.length === 0) {
-    // Reset all displayed values when no ingredients are selected
     document.querySelector(".kcalValue").textContent = "0";
-
-    // Reset all circles to zero state
     document.getElementById("fatCircle").innerHTML = `
       <div class="circle zeroValue">
         <div class="circleValue">0<span>g</span></div>
@@ -278,11 +287,9 @@ function renderNutrient(inputIngredient) {
       <p>Fiber</p>
     `;
 
-    // Clear the chart
     const oldCanvas = document.getElementById("addRecipeChart");
     if (oldCanvas) oldCanvas.remove();
 
-    // Display empty nutrient values
     document.getElementById("macronutrientsValue").innerHTML = `
     <div class="recipeDetailsTitle">
       <h2>Macronutrients per portion</h2>
@@ -419,7 +426,6 @@ function renderNutrient(inputIngredient) {
   let totalPantothenicAcid = 0;
   let totalFolate = 0;
 
-  // Calculate totals only if there are ingredients
   inputIngredient.forEach((ingredientId) => {
     const food = foodData.find((e) => e.id === ingredientId);
 
