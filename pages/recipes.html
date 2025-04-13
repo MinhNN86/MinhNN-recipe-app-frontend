@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipes Dashboard</title>
+    <link rel="stylesheet" href="../css/recipes.css" />
+    <link rel="icon" type="image/x-icon" href="../assets/iconWeb.png" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- sideBar -->
+      <div class="sideBar">
+        <div class="logo">
+          <img
+            src="../assets/logo.png"
+            alt=""
+            width="190px"
+            height="44px"
+            class="logoFull"
+          />
+          <img
+            src="../assets/miniLogo.png"
+            alt=""
+            height="44px"
+            class="logoIcon"
+            style="display: none"
+          />
+        </div>
+        <div class="pages">
+          <a href="./home.html">
+            <div class="page home" data-page="home">
+              <div class="icon">
+                <img src="../assets/sidebarMenu/home.png" alt="" />
+              </div>
+              <div class="textPage">Home</div>
+            </div>
+          </a>
+          <a href="./food.html">
+            <div class="page food" data-page="food">
+              <div class="icon">
+                <img src="../assets/sidebarMenu/food.png" alt="" />
+              </div>
+              <div class="textPage">Food</div>
+            </div>
+          </a>
+          <a href="./recipes.html">
+            <div class="page recipe pageSelect" data-page="recipes">
+              <div class="icon">
+                <img src="../assets/sidebarMenu/recipes.png" alt="" />
+              </div>
+              <div class="textPage">Recipes</div>
+            </div>
+          </a>
+        </div>
+        <div class="signOut">
+          <img
+            src="../assets/sidebarMenu/signOut.png"
+            alt=""
+            width="30px"
+            height="30px"
+          />
+          <div class="textSignOut">Sign out</div>
+        </div>
+      </div>
+      <div class="header-content">
+        <!-- Header -->
+        <header>
+          <div class="firstHeader">
+            <div class="btnCloseSidebar" style="cursor: pointer">
+              <img
+                src="../assets/header/Button.png"
+                alt=""
+                width="46px"
+                height="32px"
+              />
+            </div>
+            <div class="info">
+              <div class="username" style="font-size: 15.4px">MinhNN</div>
+              <img
+                src="../assets/header/icon.png"
+                alt=""
+                width="8px"
+                height="4px"
+              />
+            </div>
+          </div>
+          <div class="secondHeader">
+            <h2>Recipes</h2>
+            <p>Create, check and update recipes</p>
+          </div>
+        </header>
+        <!-- Nội dung -->
+        <div class="contentContainer">
+          <div class="contentTitle">
+            <div class="title">
+              <h2>Recipes</h2>
+              <p>Search, check and create new recipes</p>
+            </div>
+            <img
+              src="../assets/recipes/addRecipes.png"
+              alt=""
+              width="24px"
+              height="36px"
+              style="cursor: pointer"
+              id="addRecipe"
+            />
+          </div>
+          <div class="search">
+            <input
+              type="text"
+              placeholder="Search recipes by name"
+              id="searchRecipe"
+            />
+            <div class="sortNutrient">
+              <div class="iconSort">
+                <img
+                  src="../assets/home/sortBtn.png"
+                  alt=""
+                  width="18px"
+                  height="18px"
+                  id="sortNutrientBtn"
+                />
+              </div>
+              <select name="nutrient" id="searchNutrient"></select>
+            </div>
+            <div class="searchCategory">
+              <select name="Category" id="searchCategory"></select>
+            </div>
+          </div>
+
+          <div class="myRecipesInfo">
+            <div class="recipesLike">
+              <img
+                src="../assets/recipes/favoritesIcon.png"
+                alt=""
+                height="14px"
+                width="14px"
+              />
+              <div class="textRecipesLike">Favorites</div>
+              <div id="valueFavorite"></div>
+            </div>
+            <div class="recipesMenu">
+              <input type="checkbox" id="checkMyRecipes" />
+              <div class="myRecipes">
+                <img
+                  src="../assets/recipes/iconMyRecipes.png"
+                  alt=""
+                  height="14px"
+                  width="14px"
+                />
+                <div class="textMyRecipes">My recipes</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="recipesList">
+            <!-- card -->
+          </div>
+          <nav class="paginationRecipes">
+            <div class="pagination" id="pagination"></div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <script src="../js/recipes.js"></script>
+  </body>
+</html>

@@ -1,0 +1,418 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-family: "Open Sans", sans-serif;
+  color: #a7b1c2;
+}
+
+/*! CSS trang */
+.container {
+  display: flex;
+}
+
+/*! CSS sideBar */
+.sideBar {
+  width: 220px;
+  height: 900px;
+  background-color: #304151;
+  font-weight: 600;
+}
+
+.sideBar a {
+  text-decoration: none;
+}
+
+.logo {
+  height: 156px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #293846;
+}
+
+.logoFull,
+.logoIcon {
+  transition: all 0.3s ease;
+}
+
+.logoIcon {
+  display: none;
+}
+
+.sideBar.collapsed .logoFull {
+  display: none;
+}
+
+.sideBar.collapsed .logoIcon {
+  display: block;
+}
+
+.pages {
+  height: 644px;
+}
+
+.page {
+  height: 50px;
+  cursor: pointer;
+  padding: 10px 20px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  text-decoration: none;
+}
+
+.page .icon {
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 10%);
+  width: 30px;
+  height: 30px;
+}
+
+.page .icon img {
+  margin: 6px;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  /* Giữ nguyên tỉ lệ, không bị méo */
+}
+
+.signOut {
+  margin-top: 50px;
+  padding: 10px 20px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  background-color: #12896d;
+  cursor: pointer;
+}
+
+.signOut .textSignOut {
+  color: #ffffff;
+}
+
+/*! style page đang chọn*/
+.pages .pageSelect {
+  background-color: #293846;
+}
+
+.pages .pageSelect .icon {
+  background-color: #1ab394;
+}
+
+.pages .pageSelect .icon img {
+  filter: brightness(0) invert(1);
+  /* Chuyển ảnh thành màu trắng */
+}
+
+.pages .pageSelect .textPage {
+  color: #ffffff;
+}
+
+/*! header */
+.header-content {
+  width: calc(100% - 220px);
+  background-color: #f3f3f4;
+}
+
+.header-content header {
+  height: 167px;
+  width: 100%;
+  border-bottom: 1px solid #ebebeb;
+  background-color: #ffffff;
+}
+
+.header-content .firstHeader {
+  display: flex;
+  padding: 21px 20px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.header-content .firstHeader .info {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.secondHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 2px rgba(144, 144, 144, 0.14);
+}
+
+.secondHeader h2 {
+  font-size: 24px;
+  font-weight: lighter;
+  color: #676a6c;
+}
+
+/*! Nội dung (tiêu đề và tìm kiếm) */
+.contentContainer {
+  background-color: #ffffff;
+  margin: 25px 15px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.contentTitle h2 {
+  font-size: 20px;
+  font-weight: normal;
+  color: #676a6c;
+}
+
+.contentTitle p {
+  color: #888888;
+  margin-bottom: 15px;
+}
+
+.contentContainer .search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 34px;
+  margin-bottom: 31px;
+  justify-content: center;
+}
+
+.contentContainer .search #searchRecipe {
+  height: 100%;
+  width: 695px;
+  border: 1px solid #e5e6e7;
+  padding: 8px 13px;
+  color: #676a6c;
+}
+
+.contentContainer .search #searchRecipe::placeholder {
+  color: #b2b4b5;
+}
+
+.contentContainer .search .sortNutrient {
+  height: 100%;
+  display: flex;
+}
+
+.contentContainer .search .sortNutrient img {
+  padding: 8px 9px;
+  border-left: 1px solid #e5e6e7;
+  border-top: 1px solid #e5e6e7;
+  border-bottom: 1px solid #e5e6e7;
+}
+
+.contentContainer .search .sortNutrient select {
+  width: 200px;
+  border: 1px solid #e5e6e7;
+  padding: 6px 12px;
+  color: #b2b4b5;
+}
+
+
+.contentContainer .search #searchCategory {
+  height: 100%;
+  width: 200px;
+  border: 1px solid #e5e6e7;
+  padding: 6px 12px;
+  color: #b2b4b5;
+}
+
+/*! Thẻ công thức */
+.recipesList {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.recipeCard {
+  display: flex;
+  justify-content: space-betweens;
+  width: 565px;
+  border: 1px solid #eeeeee;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.recipeTag {
+  display: flex;
+  flex-direction: column;
+  width: 275px;
+}
+
+.recipeTag .recipeTagHeader {
+  width: 150.84px;
+  height: 28.5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 7.25px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0px 1px 3px 0px #dddddd;
+  border-radius: 6px;
+}
+
+.recipeTag .recipeTagHeader .communityRecipe {
+  font-size: 11px;
+  font-weight: bold;
+  color: #ea9f77;
+}
+
+.recipeTag .recipePicture {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.recipeTag .recipePicture img {
+  margin-left: 10px;
+  width: 80%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+
+.recipeContent {
+  width: 345px;
+}
+
+.recipeTitle {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  height: 40px;
+  margin: 21px 21px 12.25px 0px;
+}
+
+.recipeTitle .recipeName {
+  font-size: 15px;
+  color: #282828;
+  padding-left: 20px;
+}
+
+.recipeTitle .recipeLike {
+  width: 60px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12.67px;
+  padding: 6px 10px;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.recipeTitle .recipeLike .numOfLike {
+  font-size: 11px;
+  font-weight: 500;
+  color: #aaaaaa;
+}
+
+.recipeAuthor {
+  padding-left: 20px;
+  color: #676a6c;
+  margin-bottom: 21.25px;
+}
+
+.recipeCategory {
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.recipeCategory .categoryName span {
+  color: #676a6c;
+}
+
+.nutritionInfo {
+  border-top: 1px solid #eeeeee;
+  padding: 11.5px 15.48px;
+  display: flex;
+  /* gap: 31px; */
+  justify-content: space-between;
+}
+
+.recipeNutrition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nutritionInfo div {
+  font-size: 11px;
+  color: #888888;
+}
+
+.recipeNutrition .nutritionValue {
+  color: #282828;
+}
+
+/* Nav pagination */
+.paginationRecipes {
+  margin-top: 100px;
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+}
+
+.paginationRecipes #pagination {
+  display: flex;
+}
+
+.paginationRecipes #pagination div {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #DDDDDD;
+  background-color: #FFFFFF;
+}
+
+.paginationRecipes #pagination .backPage,
+.paginationRecipes #pagination .nextPage {
+  width: 35px;
+}
+
+.paginationRecipes #pagination .active {
+  background-color: #F4F4F4;
+}
+
+/* Hiệu ứng chuyển đổi khi thu gọn */
+.sideBar,
+.header-content,
+.logo,
+.page,
+.signOut {
+  transition: all 0.3s ease;
+}
+
+/* Style khi sidebar thu gọn */
+.sideBar.collapsed {
+  width: 60px;
+}
+
+.sideBar.collapsed .page,
+.sideBar.collapsed .signOut {
+  padding: 10px;
+  justify-content: center;
+}
+
+.sideBar.collapsed .logo {
+  justify-content: center;
+  padding: 0;
+}
+
+/* Mở rộng nội dung khi sidebar thu gọn */
+.header-content.expanded {
+  width: calc(100% - 60px);
+}

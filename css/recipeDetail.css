@@ -1,0 +1,598 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-family: "Open Sans", sans-serif;
+  color: #a7b1c2;
+}
+
+/*! CSS trang */
+.container {
+  display: flex;
+}
+
+/*! CSS sideBar */
+.sideBar {
+  width: 220px;
+  height: 900px;
+  background-color: #304151;
+  font-weight: 600;
+}
+
+.sideBar a {
+  text-decoration: none;
+}
+
+.logo {
+  height: 156px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #293846;
+}
+
+.pages {
+  height: 644px;
+}
+
+.page {
+  height: 50px;
+  cursor: pointer;
+  padding: 10px 20px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  text-decoration: none;
+}
+
+.page .icon {
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 10%);
+  width: 30px;
+  height: 30px;
+}
+
+.page .icon img {
+  margin: 6px;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  /* Giữ nguyên tỉ lệ, không bị méo */
+}
+
+.signOut {
+  margin-top: 50px;
+  padding: 10px 20px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  background-color: #12896d;
+  cursor: pointer;
+}
+
+.signOut .textSignOut {
+  color: #ffffff;
+}
+
+/*! style page đang chọn*/
+.pages .pageSelect {
+  background-color: #293846;
+}
+
+.pages .pageSelect .icon {
+  background-color: #1ab394;
+}
+
+.pages .pageSelect .icon img {
+  filter: brightness(0) invert(1);
+  /* Chuyển ảnh thành màu trắng */
+}
+
+.pages .pageSelect .textPage {
+  color: #ffffff;
+}
+
+/*! header */
+.header-content {
+  width: calc(100% - 220px);
+  background-color: #f3f3f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-content header {
+  height: 167px;
+  width: 100%;
+  border-bottom: 1px solid #ebebeb;
+  background-color: #ffffff;
+}
+
+.header-content .firstHeader {
+  display: flex;
+  padding: 21px 20px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.header-content .firstHeader .info {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.secondHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 2px rgba(144, 144, 144, 0.14);
+}
+
+.secondHeader h2 {
+  font-size: 24px;
+  font-weight: lighter;
+  color: #676a6c;
+}
+
+/*! Nội dung (tiêu đề và tìm kiếm) */
+.containerRecipeDetail {
+  margin: 25px 15px;
+  display: flex;
+  gap: 30px;
+}
+
+.infoLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.recipeMenu {
+  width: 275px;
+  height: 327px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 30px 20px;
+  box-shadow: 0px 2px 2px 0px rgba(144, 144, 144, 0.14);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.firstMenu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.communityRecipes {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 7px 10px;
+  box-shadow: 0px 1px 3px 0px #dddddd;
+  border-radius: 6px;
+}
+
+.communityRecipes .communityRecipe {
+  color: #ea9f77;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.communityRecipes .myRecipes {
+  color: #2BA0CC;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.recipeLike {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 7px 7px;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+}
+
+.recipeLike div {
+  color: #aaaaaa;
+  font-size: 11px;
+}
+
+.recipePicture {
+  /* width: 100%; */
+}
+
+.recipePicture img {
+  width: 100%;
+}
+
+.categoryRecipe {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 7px;
+  border: 1px solid #f3f3f4;
+  width: auto;
+  border-radius: 3px;
+}
+
+.categoryRecipe span {
+  font-size: 11px;
+  color: #676a6c;
+}
+
+.addFavorite {
+  width: 143px;
+  height: 32px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 0px 13px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  border: 1px solid #eeeeee;
+  cursor: pointer;
+}
+
+.addFavorite div {
+  color: #676a6c;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.recipeInfo {
+  background-color: #ffffff;
+  box-shadow: 0px 2px 2px 0px rgba(144, 144, 144, 0.14);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.recipeInfo .recipeTitle {
+  margin-bottom: 22px;
+}
+
+.recipeInfo .recipeTitle h2 {
+  font-size: 22px;
+  font-weight: normal;
+  color: #676a6c;
+}
+
+.recipeInfo .recipeTitle p {
+  font-size: 12px;
+  color: #888888;
+}
+
+.recipeInfo .infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.recipeInfo .infoRow {
+  display: flex;
+}
+
+.recipeInfo .infoRow .infoName {
+  width: 200px;
+  height: 41.5px;
+  border: 1px solid #eeeeee;
+  background-color: #fafafb;
+  padding-left: 11px;
+  font-size: 14.3px;
+  color: #676a6c;
+  display: flex;
+  align-items: center;
+}
+
+.recipeInfo .infoRow .infoValue input {
+  height: 41.5px;
+  width: 645px;
+  border: 1px solid #eeeeee;
+  background-color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0px 10px;
+  color: #676a6c;
+  border-left: 1px solid #ffffff;
+}
+
+.recipeInfo .infoRow .infoName.description {
+  height: 61px;
+}
+
+.recipeInfo .infoRow .infoValue.description {
+  width: 645px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  color: #676a6c;
+  border: 1px solid #eeeeee;
+  border-left: 1px solid #ffffff;
+}
+
+.creation {
+  width: 1170px;
+  height: 61px;
+  background-color: #1ab394;
+  margin: 0px 15px;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+
+.creation div:first-child {
+  color: #ffffff;
+  font-size: 17px;
+}
+
+.creation div:last-child {
+  color: #ffffff;
+  font-size: 11px;
+}
+
+/* CSS title chung */
+.recipeDetail .recipeDetailsTitle {
+  margin-bottom: 15px;
+}
+
+.recipeDetail .recipeDetailsTitle h2 {
+  font-size: 20px;
+  color: #676a6c;
+  font-weight: normal;
+}
+
+.recipeDetail .recipeDetailsTitle p {
+  font-size: 12px;
+  color: #888888;
+  font-weight: lighter;
+}
+
+.recipeDetail .recipeDetailCard {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 2px 2px 0 rgba(144, 144, 144, 0.14);
+  border-radius: 5px;
+}
+
+.recipeDetail {
+  display: flex;
+  gap: 30px;
+  padding: 0px 15px;
+}
+
+/*! CookingMethod */
+.ingredientCookingMethod {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.ingredientCookingMethod .ingredient {
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.ingredientCookingMethod .ingredientValue {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ingredientCookingMethod .ingredientValue div {
+  width: 742.33px;
+  height: 40.5px;
+  display: flex;
+  align-items: center;
+  padding-left: 11px;
+  color: #585858;
+  font-weight: bold;
+  border: 1px solid #eeeeee;
+}
+
+.ingredientCookingMethod .cookingMethod .stepCook {
+  display: flex;
+}
+
+.ingredientCookingMethod .cookingMethod .stepCook .stepNumber {
+  width: 40px;
+  background-color: #fafafb;
+  border: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #676a6c;
+  font-size: 14.3px;
+  font-weight: bold;
+}
+
+.ingredientCookingMethod .cookingMethod .stepCook .stepValue {
+  width: 703.33px;
+  padding: 11px 10px;
+  color: #676a6c;
+  border: 1px solid #eeeeee;
+  border-left: 1px solid #ffffff;
+  line-height: 19.5px;
+}
+
+/*! nutrient */
+.nutrient {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 360px;
+}
+
+.global .energyGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 25px;
+}
+
+.global .energyGroup .energy {
+  color: #676a6c;
+}
+
+.global .energyGroup .kcalInfo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.global .energyGroup .kcalValue {
+  font-size: 14px;
+  color: #676a6c;
+  font-weight: 550;
+}
+
+.global .energyGroup .kcal {
+  color: #888888;
+  font-size: 11px;
+}
+
+.globalCircle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.globalItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.globalCircle .circle {
+  width: 72.2px;
+  height: 72.2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 100%;
+}
+
+.globalCircle .globalItem .red {
+  border: 6px solid #db4965;
+}
+
+.globalCircle .globalItem .orange {
+  border: 6px solid #ea9f77;
+}
+
+.globalCircle .globalItem .green {
+  border: 6px solid #1ab394;
+}
+
+.globalCircle .globalItem .blue {
+  border: 6px solid #6a7d93;
+}
+
+.globalCircle .globalItem .zeroValue {
+  border: 6px solid #F3F3F4 !important;
+}
+
+.globalCircle .circleValue {
+  font-size: 16px;
+  color: #676a6c;
+}
+
+.globalCircle .circleValue span {
+  font-size: 16px;
+  color: #676a6c;
+}
+
+.globalCircle .globalItem p {
+  color: #888888;
+}
+
+.micronutrient .nutrientItem {
+  display: flex;
+  justify-content: space-between;
+  height: 28px;
+}
+
+.micronutrient .nutrientItem:nth-child(odd) {
+  background-color: #fafafb;
+}
+
+.micronutrient .nutrientName {
+  color: #717171;
+}
+
+.micronutrient .nutrientValue {
+  color: #717171;
+  font-weight: bold;
+}
+
+.micronutrient .nutrientValue span {
+  font-weight: normal;
+  color: #717171;
+}
+
+/* Hiệu ứng chuyển đổi khi thu gọn */
+.sideBar,
+.header-content,
+.logo,
+.page,
+.signOut {
+  transition: all 0.3s ease;
+}
+
+/* Style khi sidebar thu gọn */
+.sideBar.collapsed {
+  width: 60px;
+}
+
+.sideBar.collapsed .page,
+.sideBar.collapsed .signOut {
+  padding: 10px;
+  justify-content: center;
+}
+
+.sideBar.collapsed .logo {
+  justify-content: center;
+  padding: 0;
+}
+
+/* Mở rộng nội dung khi sidebar thu gọn */
+.header-content.expanded {
+  width: calc(100% - 60px);
+}
+
+/* Style cho logo */
+.logoFull,
+.logoIcon {
+  transition: all 0.3s ease;
+}
+
+.logoIcon {
+  display: none;
+  /* Ẩn logo icon ban đầu */
+}
+
+/* Hiển thị logo icon khi sidebar thu gọn */
+.sideBar.collapsed .logoIcon {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+/* Ẩn logo đầy đủ khi sidebar thu gọn */
+.sideBar.collapsed .logoFull {
+  display: none;
+}
+
+/* Ẩn text khi sidebar thu gọn */
+.sideBar.collapsed .textPage,
+.sideBar.collapsed .textSignOut {
+  display: none;
+}

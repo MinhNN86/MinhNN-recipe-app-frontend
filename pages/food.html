@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Dashboard</title>
+    <link rel="stylesheet" href="../css/food.css" />
+    <link rel="icon" type="image/x-icon" href="../assets/iconWeb.png" />
+    <script
+      src="https://kit.fontawesome.com/8a24770e1c.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+
+  <body>
+    <div class="containerPage">
+      <!-- sideBar -->
+      <div class="sideBar">
+        <div class="logo">
+          <img
+            src="../assets/logo.png"
+            alt=""
+            width="190px"
+            height="44px"
+            class="logoFull"
+          />
+          <img
+            src="../assets/miniLogo.png"
+            alt=""
+            height="44px"
+            class="logoIcon"
+          />
+        </div>
+        <div class="pages">
+          <a href="./home.html">
+            <div class="page home" data-page="home">
+              <div class="icon">
+                <img src="../assets/sidebarMenu/home.png" alt="" />
+              </div>
+              <div class="textPage">Home</div>
+            </div>
+          </a>
+          <a href="./food.html">
+            <div class="page food pageSelect" data-page="food">
+              <div class="icon">
+                <img src="../assets/sidebarMenu/food.png" alt="" />
+              </div>
+              <div class="textPage">Food</div>
+            </div>
+          </a>
+          <a href="./recipes.html">
+            <div class="page recipe" data-page="recipes">
+              <div class="icon">
+                <img src="../assets/sidebarMenu/recipes.png" alt="" />
+              </div>
+              <div class="textPage">Recipes</div>
+            </div>
+          </a>
+        </div>
+        <div class="signOut">
+          <img
+            src="../assets/sidebarMenu/signOut.png"
+            alt=""
+            width="30px"
+            height="30px"
+          />
+          <div class="textSignOut">Sign out</div>
+        </div>
+      </div>
+      <div class="header-content">
+        <!-- Header -->
+        <header>
+          <div class="firstHeader">
+            <div class="btnCloseSidebar" style="cursor: pointer">
+              <img
+                src="../assets/header/Button.png"
+                alt=""
+                width="46"
+                height="32"
+              />
+            </div>
+            <div class="info">
+              <div class="username" style="font-size: 15.4px">MinhNN</div>
+              <img
+                src="../assets/header/icon.png"
+                alt=""
+                width="8px"
+                height="4px"
+              />
+            </div>
+          </div>
+          <div class="secondHeader">
+            <h2>Food databases</h2>
+            <p>Create, check and update foods that you can use on meal plans</p>
+          </div>
+        </header>
+        <!-- Nội dung -->
+        <div class="contentContainer">
+          <div class="contentTitle">
+            <h2>Foods</h2>
+            <p>Search, consult and add new foods to the system</p>
+          </div>
+          <div class="search">
+            <input type="text" placeholder="Search food" id="searchFood" />
+            <div class="sortNutrient">
+              <img
+                src="../assets/home/sortBtn.png"
+                alt=""
+                style="cursor: pointer"
+                id="sortNutrientBtn"
+              />
+              <select name="nutrient" id="inputNutrient"></select>
+            </div>
+            <input type="text" placeholder="Category" id="searchCategory" />
+          </div>
+
+          <div class="foodList">
+            <!-- card -->
+          </div>
+          <div class="createFood" id="createFood">
+            <img
+              src="../assets/food/IconCreateFood.png"
+              alt=""
+              width="24px"
+              height="24px"
+            />
+            <div class="textCreateFood">Create food</div>
+          </div>
+          <nav class="paginationFood">
+            <div class="pagination" id="pagination"></div>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal -->
+    <div class="modal" id="foodModal"></div>
+
+    <!-- crateFoodModal -->
+    <div class="createFoodModal modal" id="createFoodModal">
+      <div class="modalContent">
+        <div class="closeBtn" id="createFoodCloseBtn">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="modalTitle">
+          <h1>Food information</h1>
+          <p>Check and update the information about the food</p>
+        </div>
+        <div class="info1 tableInfo">
+          <div class="nameCategory tableCol">
+            <div class="name tableRow">
+              <div class="nameValue">Name</div>
+              <div class="value">
+                <input type="text" id="inputName" />
+              </div>
+            </div>
+            <div class="category tableRow">
+              <div class="nameValue">Category</div>
+              <div class="value">
+                <input type="text" id="inputCategory" />
+              </div>
+            </div>
+          </div>
+
+          <div class="sourceQuantity tableCol">
+            <div class="source tableRow">
+              <div class="nameValue">Source</div>
+              <div class="value">
+                <input type="text" id="inputSource" disabled />
+              </div>
+            </div>
+            <div class="quantity tableRow">
+              <div class="nameValue">Quantity</div>
+              <div class="value">
+                <input type="text" id="inputQuantity" />
+              </div>
+              <div class="weightValue">grams</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info2">Nutritional value per 100 g</div>
+
+        <div class="info3">
+          <div class="infoTitle">Macronutrients</div>
+          <div class="tableInfo">
+            <div class="energyCarbohydrate tableCol">
+              <div class="energy tableRow">
+                <div class="nameValue">Energy</div>
+                <div class="value">
+                  <input type="text" id="inputEnergy" />
+                </div>
+                <div class="weightValue">kcal</div>
+              </div>
+              <div class="carbohydrate tableRow">
+                <div class="nameValue">Carbohydrate</div>
+                <div class="value">
+                  <input type="text" id="inputCarbohydrate" />
+                </div>
+                <div class="weightValue">g</div>
+              </div>
+            </div>
+
+            <div class="fatProtein tableCol">
+              <div class="fat tableRow">
+                <div class="nameValue">Fat</div>
+                <div class="value">
+                  <input type="text" id="inputFat" />
+                </div>
+                <div class="weightValue">g</div>
+              </div>
+              <div class="protein tableRow">
+                <div class="nameValue">Protein</div>
+                <div class="value">
+                  <input type="text" id="inputProtein" />
+                </div>
+                <div class="weightValue">g</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info4">
+          <div class="infoTitle">Micronutrients</div>
+          <div class="tableInfo">
+            <!-- col 1 -->
+            <div class="tableCol">
+              <div class="tableRow">
+                <div class="nameValue">Cholesterol</div>
+                <input type="text" id="inputCholesterol" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Water</div>
+                <input type="text" id="inputWater" />
+                <div class="weightValue">g</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Vitamin B-12</div>
+                <input type="text" id="inputVitaminB12" />
+                <div class="weightValue">ug</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Vitamin E</div>
+                <input type="text" id="inputVitaminE" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Lactose</div>
+                <input type="text" id="inputLactose" />
+                <div class="weightValue">g</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Sugars</div>
+                <input type="text" id="inputSugars" />
+                <div class="weightValue">g</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Magnesium</div>
+                <input type="text" id="inputMagnesium" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Zinc</div>
+                <input type="text" id="inputZinc" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Manganese</div>
+                <input type="text" id="inputManganese" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Riboflavin</div>
+                <input type="text" id="inputRiboflavin" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Folate, total</div>
+                <input type="text" id="inputFolateTotal" />
+                <div class="weightValue">ug</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Fatty acids, total saturated</div>
+                <input type="text" id="inputSaturatedFattyAcids" />
+                <div class="weightValue">g</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Chloride</div>
+                <input type="text" id="inputChloride" />
+                <div class="weightValue">mg</div>
+              </div>
+            </div>
+
+            <!-- col 2 -->
+            <div class="tableCol">
+              <div class="tableRow">
+                <div class="nameValue">Fiber</div>
+                <input type="text" id="inputFiber" />
+                <div class="weightValue">g</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Vitamin A</div>
+                <input type="text" id="inputVitaminA" />
+                <div class="weightValue">ug</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Vitamin C</div>
+                <input type="text" id="inputVitaminC" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Vitamin K</div>
+                <input type="text" id="inputVitaminK" />
+                <div class="weightValue">ug</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Alcohol</div>
+                <input type="text" id="inputAlcohol" />
+                <div class="weightValue">g</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Calcium</div>
+                <input type="text" id="inputCalcium" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Phosphorus</div>
+                <input type="text" id="inputPhosphorus" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Copper</div>
+                <input type="text" id="inputCopper" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Selenium</div>
+                <input type="text" id="inputSelenium" />
+                <div class="weightValue">ug</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Niacin</div>
+                <input type="text" id="inputNiacin" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Folic acid</div>
+                <input type="text" id="inputFolicAcid" />
+                <div class="weightValue">ug</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Fatty acids, total monounsaturated</div>
+                <input type="text" id="inputMonounsaturatedFattyAcids" />
+                <div class="weightValue">g</div>
+              </div>
+            </div>
+
+            <!-- col 3 -->
+            <div class="tableCol">
+              <div class="tableRow">
+                <div class="nameValue">Sodium</div>
+                <input type="text" id="inputSodium" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Vitamin B-6</div>
+                <input type="text" id="inputVitaminB6" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Vitamin D (D2 + D3)</div>
+                <input type="text" id="inputVitaminD" />
+                <div class="weightValue">ug</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Starch</div>
+                <input type="text" id="inputStarch" />
+                <div class="weightValue">g</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Caffeine</div>
+                <input type="text" id="inputCaffeine" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Iron</div>
+                <input type="text" id="inputIron" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Potassium</div>
+                <input type="text" id="inputPotassium" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Fluoride</div>
+                <input type="text" id="inputFluoride" />
+                <div class="weightValue">ug</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Thiamin</div>
+                <input type="text" id="inputThiamin" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Pantothenic acid</div>
+                <input type="text" id="inputPantothenicAcid" />
+                <div class="weightValue">mg</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Fatty acids, total trans</div>
+                <input type="text" id="inputTransFattyAcids" />
+                <div class="weightValue">g</div>
+              </div>
+              <div class="tableRow">
+                <div class="nameValue">Fatty acids, total polyunsaturated</div>
+                <input type="text" id="inputPolyunsaturatedFattyAcids" />
+                <div class="weightValue">g</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cancelSave">
+          <div class="cancel" id="cancelCreateFood">Cancel</div>
+          <div class="save" id="saveCreateFood">Save and close</div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/food.js"></script>
+  </body>
+</html>
