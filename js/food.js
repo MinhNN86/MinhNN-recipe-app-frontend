@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (foodData.length === 0) {
     Swal.fire({
       title: "Chưa có thực phẩm",
-      text: "Vào click Create food để thêm nhé!",
+      text: "Click vào Create food để thêm nhé!",
       icon: "question",
     });
   }
