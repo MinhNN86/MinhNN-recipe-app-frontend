@@ -41,10 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
       logoIcon.style.display = "none";
     }
   });
-});
 
-//render Lượt thích recipe
-document.addEventListener("DOMContentLoaded", function () {
+  //render Lượt thích recipe
   let foodLikes = 0;
   const loginAccountData = JSON.parse(localStorage.getItem("loginAccountData"));
   let username = loginAccountData.username;
@@ -55,8 +53,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
   document.getElementById("valueFavorite").textContent = `${foodLikes}`;
+
   //render tên đăng nhập trên góc
   document.querySelector(".firstHeader .username").textContent = `${username}`;
+
+  // chưa có dữ liệu recipe thì popUp
+  if (!recipesData || recipesData.length === 0) {
+    Swal.fire({
+      title: "Chưa có công thức trong Data",
+      text: "Thêm công thức riêng của bạn ngay!",
+      icon: "question",
+    });
+  }
 });
 
 //Đăng xuất tài khoản
