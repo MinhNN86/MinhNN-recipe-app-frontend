@@ -1,439 +1,442 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recipe Detail</title>
-    <link rel="stylesheet" href="../css/RecipeDetail.css" />
-    <link rel="icon" type="image/x-icon" href="../assets/iconWeb.png" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe Detail</title>
+  <link rel="stylesheet" href="../css/RecipeDetail.css" />
+  <link rel="icon" type="image/x-icon" href="../assets/iconWeb.png" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
 
-  <body>
-    <div class="container">
-      <!-- sideBar -->
-      <div class="sideBar">
-        <div class="logo">
+<body>
+<div class="container">
+  <!-- sideBar -->
+  <div class="sideBar">
+    <div class="logo">
+      <img
+              src="../assets/logo.png"
+              alt=""
+              width="190px"
+              height="44px"
+              class="logoFull"
+      />
+      <img
+              src="../assets/miniLogo.png"
+              alt=""
+              height="44px"
+              class="logoIcon"
+              style="display: none"
+      />
+    </div>
+    <div class="pages">
+      <a href="./home.html">
+        <div class="page home" data-page="home">
+          <div class="icon">
+            <img src="../assets/sidebarMenu/home.png" alt="" />
+          </div>
+          <div class="textPage">Home</div>
+        </div>
+      </a>
+      <a href="./food.html">
+        <div class="page food" data-page="food">
+          <div class="icon">
+            <img src="../assets/sidebarMenu/food.png" alt="" />
+          </div>
+          <div class="textPage">Food</div>
+        </div>
+      </a>
+      <a href="./recipes.html">
+        <div class="page recipe pageSelect" data-page="recipes">
+          <div class="icon">
+            <img src="../assets/sidebarMenu/recipes.png" alt="" />
+          </div>
+          <div class="textPage">Recipes</div>
+        </div>
+      </a>
+    </div>
+    <div class="signOut">
+      <img
+              src="../assets/sidebarMenu/signOut.png"
+              alt=""
+              width="30px"
+              height="30px"
+      />
+      <div class="textSignOut">Sign out</div>
+    </div>
+  </div>
+  <div class="header-content">
+    <!-- Header -->
+    <header>
+      <div class="firstHeader">
+        <div class="btnCloseSidebar" style="cursor: pointer">
           <img
-            src="../assets/logo.png"
-            alt=""
-            width="190px"
-            height="44px"
-            class="logoFull"
-          />
-          <img
-            src="../assets/miniLogo.png"
-            alt=""
-            height="44px"
-            class="logoIcon"
-            style="display: none"
+                  src="../assets/header/Button.png"
+                  alt=""
+                  width="46px"
+                  height="32px"
           />
         </div>
-        <div class="pages">
-          <a href="./home.html">
-            <div class="page home" data-page="home">
-              <div class="icon">
-                <img src="../assets/sidebarMenu/home.png" alt="" />
-              </div>
-              <div class="textPage">Home</div>
-            </div>
-          </a>
-          <a href="./food.html">
-            <div class="page food" data-page="food">
-              <div class="icon">
-                <img src="../assets/sidebarMenu/food.png" alt="" />
-              </div>
-              <div class="textPage">Food</div>
-            </div>
-          </a>
-          <a href="./recipes.html">
-            <div class="page recipe pageSelect" data-page="recipes">
-              <div class="icon">
-                <img src="../assets/sidebarMenu/recipes.png" alt="" />
-              </div>
-              <div class="textPage">Recipes</div>
-            </div>
-          </a>
-        </div>
-        <div class="signOut">
+        <div class="info">
+          <div class="username" style="font-size: 15.4px">MinhNN</div>
           <img
-            src="../assets/sidebarMenu/signOut.png"
-            alt=""
-            width="30px"
-            height="30px"
+                  src="../assets/header/icon.png"
+                  alt=""
+                  width="8px"
+                  height="4px"
           />
-          <div class="textSignOut">Sign out</div>
         </div>
       </div>
-      <div class="header-content">
-        <!-- Header -->
-        <header>
-          <div class="firstHeader">
-            <div class="btnCloseSidebar" style="cursor: pointer">
+      <div class="secondHeader">
+        <h2>Recipes</h2>
+        <p>Create, check and update recipes</p>
+      </div>
+    </header>
+    <!-- Nội dung -->
+    <div class="containerRecipeDetail">
+      <div class="infoLeft">
+        <div class="recipeMenu">
+          <div class="firstMenu">
+            <div class="communityRecipes">
               <img
-                src="../assets/header/Button.png"
-                alt=""
-                width="46px"
-                height="32px"
+                      src="../assets/home/communityRecipes.png"
+                      alt=""
+                      width="14px"
+                      height="14px"
               />
+              <div class="communityRecipe">Community Recipes</div>
             </div>
-            <div class="info">
-              <div class="username" style="font-size: 15.4px">MinhNN</div>
+            <div class="recipeLike">
               <img
-                src="../assets/header/icon.png"
-                alt=""
-                width="8px"
-                height="4px"
+                      src="../assets/home/favoriteRecipes.png"
+                      alt=""
+                      width="14px"
               />
+              <div></div>
             </div>
           </div>
-          <div class="secondHeader">
-            <h2>Recipes</h2>
-            <p>Create, check and update recipes</p>
+          <div class="recipePicture">
+            <img src="" alt="Recipe Picture Error" />
           </div>
-        </header>
-        <!-- Nội dung -->
-        <div class="containerRecipeDetail">
-          <div class="infoLeft">
-            <div class="recipeMenu">
-              <div class="firstMenu">
-                <div class="communityRecipes">
-                  <img
-                    src="../assets/home/communityRecipes.png"
+          <div class="categoryRecipe">
+            <img
+                    src="../assets/home/categoryIcon.png"
                     alt=""
-                    width="14px"
-                    height="14px"
-                  />
-                  <div class="communityRecipe">Community Recipes</div>
-                </div>
-                <div class="recipeLike">
-                  <img
-                    src="../assets/home/favoriteRecipes.png"
-                    alt=""
-                    width="14px"
-                  />
-                  <div></div>
-                </div>
-              </div>
-              <div class="recipePicture">
-                <img src="" alt="Recipe Picture Error" />
-              </div>
-              <div class="categoryRecipe">
-                <img
-                  src="../assets/home/categoryIcon.png"
-                  alt=""
-                  width="12px"
-                />
-                <span></span>
-              </div>
-            </div>
-            <div class="addFavorite">
-              <img
-                src="../assets/home/addFavoriteRecipes.png"
-                alt=""
-                width="14px"
-              />
-              <div>Add to favorite</div>
-            </div>
-          </div>
-
-          <div class="recipeInfo">
-            <div class="recipeTitle">
-              <h2>Basic information</h2>
-              <p>Check and edit's basic information</p>
-            </div>
-            <div class="infoCol">
-              <div class="infoRow">
-                <div class="infoName">Name</div>
-                <div class="infoValue">
-                  <input
-                    type="text"
-                    value="Turmeric Roasted Cauliflower Salad (lowfodmap)"
-                    id="inputName"
-                    disabled
-                  />
-                </div>
-              </div>
-              <div class="infoRow">
-                <div class="infoName description">Description</div>
-                <div class="infoValue description">
-                  Our roasted cauliflower salad with turmeric is low in calories
-                  and packed with punchy flavor. Turmeric adds lovely color and
-                  flavor to this easy vegan-friendly recipe
-                </div>
-              </div>
-              <div class="infoRow">
-                <div class="infoName">Author</div>
-                <div class="infoValue">
-                  <input
-                    type="text"
-                    value="Joana Jardim"
-                    id="inputAuthor"
-                    disabled
-                  />
-                </div>
-              </div>
-              <div class="infoRow">
-                <div class="infoName">Total time</div>
-                <div class="infoValue">
-                  <input
-                    type="text"
-                    value="00:40"
-                    id="inputTotalTime"
-                    disabled
-                  />
-                </div>
-              </div>
-              <div class="infoRow">
-                <div class="infoName">Preparation time</div>
-                <div class="infoValue">
-                  <input
-                    type="text"
-                    value="00:40"
-                    id="inputPreparationTime"
-                    disabled
-                  />
-                </div>
-              </div>
-              <div class="infoRow">
-                <div class="infoName">Final weight</div>
-                <div class="infoValue">
-                  <input
-                    type="text"
-                    value="978.8 grams"
-                    id="inputFinalWeight"
-                    disabled
-                  />
-                </div>
-              </div>
-              <div class="infoRow">
-                <div class="infoName">Portions</div>
-                <div class="infoValue">
-                  <input type="text" value="4" id="inputPortions" disabled />
-                </div>
-              </div>
-            </div>
+                    width="12px"
+            />
+            <span></span>
           </div>
         </div>
-        <div class="creation">
-          <div>Creation</div>
-          <div>Create the recipe and choose the ingredients</div>
+        <div class="renderAddFavorite">
+          <div class="addFavorite" data-id="">
+            <img
+                    src="../assets/home/addFavoriteRecipes.png"
+                    alt=""
+                    width="14px"
+            />
+            <div>Add to favorite</div>
+          </div>
         </div>
-        <div class="recipeDetail">
-          <div class="ingredientCookingMethod">
-            <div class="ingredient recipeDetailCard">
-              <div class="recipeDetailsTitle">
-                <h2>Ingredients</h2>
-                <p>Search and add ingredients to the recipe</p>
-              </div>
-              <div class="ingredientValue">
-                <div>
-                  1 chopped cup (1/2" pieces) of cauliflower, raw (107 g)
-                </div>
-                <div>1 tsp of spices, turmeric, ground (3 g)</div>
-                <div>1 tbsp of olive oil (14 g)</div>
-                <div>100 grams of rice, brown, medium-grain, raw</div>
-                <div>150 grams of edamame, frozen, unprepared</div>
-                <div>1 cup, sections of lemons, raw, without peel (212 g)</div>
-                <div>1 cup slices of cucumber, with peel, raw (104 g)</div>
-                <div>4 tbsps of parsley, fresh (15 g)</div>
-                <div>
-                  50 grams of nuts, cashew nuts, oil roasted, with salt added
-                </div>
-                <div>5 tbsps of vinegar, balsamic (80 g)</div>
-                <div>4 tbsps of soy sauce made from soy (tamari) (72 g)</div>
-                <div>1 tablespoon of oil, sesame, salad or cooking (14 g)</div>
-                <div>1 tbsp of sauce, fish, ready-to-serve (18 g)</div>
-                <div>2 tbsps of syrups, maple (40 g)</div>
-              </div>
-            </div>
-            <div class="cookingMethod recipeDetailCard">
-              <div class="recipeDetailsTitle">
-                <h2>Cooking method</h2>
-                <p>Give instructions to prepare this recipe</p>
-              </div>
-              <div class="stepCook">
-                <div class="stepNumber">1</div>
-                <div class="stepValue">
-                  STEP 1 Heat the oven to 200C/fan 180C/gas 6. Put the
-                  cauliflower in an ovenproof dish or tin, add the turmeric,
-                  some seasoning and 2 tbsp oil, and toss together. Roast for
-                  20-25 minutes until tender. Tip onto a plate and cool. STEP 2
-                  Meanwhile boil the rice in salted water until tender, adding
-                  the edamame for the last minute of cooking, then drain well.
-                  Leave to cool, then tip into a large bowl. Add the roasted
-                  cauliflower, lemon juice, cucumber and some seasoning, and
-                  toss together. Add the herbs and toss again. Add mint for
-                  extra flavor. STEP 3 Whisk together the dressing ingredients.
-                  Divide the cauliflower and rice between plates, scatter over
-                  the cashews and drizzle with the dressing.
-                </div>
-              </div>
+      </div>
+
+      <div class="recipeInfo">
+        <div class="recipeTitle">
+          <h2>Basic information</h2>
+          <p>Check and edit's basic information</p>
+        </div>
+        <div class="infoCol">
+          <div class="infoRow">
+            <div class="infoName">Name</div>
+            <div class="infoValue">
+              <input
+                      type="text"
+                      value="Turmeric Roasted Cauliflower Salad (lowfodmap)"
+                      id="inputName"
+                      disabled
+              />
             </div>
           </div>
-          <div class="nutrient">
-            <div class="global recipeDetailCard">
-              <div class="recipeDetailsTitle">
-                <h2>Global analysis per portion</h2>
-                <p>Energy, macronutrients and fiber distribution</p>
-              </div>
-              <div class="energyGroup">
-                <div class="energy">Energy</div>
-                <div class="kcalInfo">
-                  <div class="kcalValue">351</div>
-                  <div class="kcal">kcal</div>
-                </div>
-              </div>
-              <div class="globalCircle">
-                <div class="globalItem" id="fatCircle">
-                  <div class="circle red">
-                    <div class="circleValue">16<span>g</span></div>
-                  </div>
-                  <p>Fat</p>
-                </div>
-                <div class="globalItem" id="carbohydrateCircle">
-                  <div class="circle orange">
-                    <div class="circleValue">45<span>g</span></div>
-                  </div>
-                  <p>Carbohydrate</p>
-                </div>
-                <div class="globalItem" id="proteinCircle">
-                  <div class="circle green">
-                    <div class="circleValue">12<span>g</span></div>
-                  </div>
-                  <p>Protein</p>
-                </div>
-                <div class="globalItem" id="fiberCircle">
-                  <div class="circle blue">
-                    <div class="circleValue">6<span>g</span></div>
-                  </div>
-                  <p>Fiber</p>
-                </div>
-              </div>
+          <div class="infoRow">
+            <div class="infoName description">Description</div>
+            <div class="infoValue description">
+              Our roasted cauliflower salad with turmeric is low in calories
+              and packed with punchy flavor. Turmeric adds lovely color and
+              flavor to this easy vegan-friendly recipe
             </div>
-
-            <div class="macronutrients recipeDetailCard">
-              <div class="recipeDetailsTitle">
-                <h2>Macronutrients per portion</h2>
-                <p>Macronutrients distribution of the recipe</p>
-              </div>
-              <canvas
-                id="myChart"
-                width="290px"
-                height="290px"
-                class="macronutrientChart"
-              ></canvas>
+          </div>
+          <div class="infoRow">
+            <div class="infoName">Author</div>
+            <div class="infoValue">
+              <input
+                      type="text"
+                      value="Joana Jardim"
+                      id="inputAuthor"
+                      disabled
+              />
             </div>
-
-            <div
-              class="micronutrient recipeDetailCard"
-              id="macronutrientsValue"
-            >
-              <div class="recipeDetailsTitle">
-                <h2>Macronutrients per portion</h2>
-                <p>Macronutrients distribution of the recipe</p>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Sodium</span>
-                <span class="nutrientValue">1418 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Vitamin A</span>
-                <span class="nutrientValue">18 <span>ug</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Vitamin B-6</span>
-                <span class="nutrientValue">0 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Vitamin B-12</span>
-                <span class="nutrientValue">0 <span>ug</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Vitamin C</span>
-                <span class="nutrientValue">50 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Vitamin D (D2 + D3)</span>
-                <span class="nutrientValue">0 <span>ug</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Vitamin E</span>
-                <span class="nutrientValue">1 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Vitamin K</span>
-                <span class="nutrientValue">87 <span>ug</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Sugars</span>
-                <span class="nutrientValue">13 <span>g</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Calcium</span>
-                <span class="nutrientValue">88 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Iron</span>
-                <span class="nutrientValue">4 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Magnesium</span>
-                <span class="nutrientValue">127 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Phosphorus</span>
-                <span class="nutrientValue">251 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Potassium</span>
-                <span class="nutrientValue">649 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Zinc</span>
-                <span class="nutrientValue">2 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Copper</span>
-                <span class="nutrientValue">1 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Fluoride</span>
-                <span class="nutrientValue">1 <span>ug</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Manganese</span>
-                <span class="nutrientValue">2 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Selenium</span>
-                <span class="nutrientValue">4 <span>ug</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Thiamin</span>
-                <span class="nutrientValue">0 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Riboflavin</span>
-                <span class="nutrientValue">0 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Niacin</span>
-                <span class="nutrientValue">3 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Pantothenic acid</span>
-                <span class="nutrientValue">1 <span>mg</span></span>
-              </div>
-              <div class="nutrientItem">
-                <span class="nutrientName">Folate, total</span>
-                <span class="nutrientValue">156 <span>ug</span></span>
-              </div>
+          </div>
+          <div class="infoRow">
+            <div class="infoName">Total time</div>
+            <div class="infoValue">
+              <input
+                      type="text"
+                      value="00:40"
+                      id="inputTotalTime"
+                      disabled
+              />
+            </div>
+          </div>
+          <div class="infoRow">
+            <div class="infoName">Preparation time</div>
+            <div class="infoValue">
+              <input
+                      type="text"
+                      value="00:40"
+                      id="inputPreparationTime"
+                      disabled
+              />
+            </div>
+          </div>
+          <div class="infoRow">
+            <div class="infoName">Final weight</div>
+            <div class="infoValue">
+              <input
+                      type="text"
+                      value="978.8 grams"
+                      id="inputFinalWeight"
+                      disabled
+              />
+            </div>
+          </div>
+          <div class="infoRow">
+            <div class="infoName">Portions</div>
+            <div class="infoValue">
+              <input type="text" value="4" id="inputPortions" disabled />
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="../js/recipeDetail.js"></script>
-  </body>
+    <div class="creation">
+      <div>Creation</div>
+      <div>Create the recipe and choose the ingredients</div>
+    </div>
+    <div class="recipeDetail">
+      <div class="ingredientCookingMethod">
+        <div class="ingredient recipeDetailCard">
+          <div class="recipeDetailsTitle">
+            <h2>Ingredients</h2>
+            <p>Search and add ingredients to the recipe</p>
+          </div>
+          <div class="ingredientValue">
+            <div>
+              1 chopped cup (1/2" pieces) of cauliflower, raw (107 g)
+            </div>
+            <div>1 tsp of spices, turmeric, ground (3 g)</div>
+            <div>1 tbsp of olive oil (14 g)</div>
+            <div>100 grams of rice, brown, medium-grain, raw</div>
+            <div>150 grams of edamame, frozen, unprepared</div>
+            <div>1 cup, sections of lemons, raw, without peel (212 g)</div>
+            <div>1 cup slices of cucumber, with peel, raw (104 g)</div>
+            <div>4 tbsps of parsley, fresh (15 g)</div>
+            <div>
+              50 grams of nuts, cashew nuts, oil roasted, with salt added
+            </div>
+            <div>5 tbsps of vinegar, balsamic (80 g)</div>
+            <div>4 tbsps of soy sauce made from soy (tamari) (72 g)</div>
+            <div>1 tablespoon of oil, sesame, salad or cooking (14 g)</div>
+            <div>1 tbsp of sauce, fish, ready-to-serve (18 g)</div>
+            <div>2 tbsps of syrups, maple (40 g)</div>
+          </div>
+        </div>
+        <div class="cookingMethod recipeDetailCard">
+          <div class="recipeDetailsTitle">
+            <h2>Cooking method</h2>
+            <p>Give instructions to prepare this recipe</p>
+          </div>
+          <div class="stepCook">
+            <div class="stepNumber">1</div>
+            <div class="stepValue">
+              STEP 1 Heat the oven to 200C/fan 180C/gas 6. Put the
+              cauliflower in an ovenproof dish or tin, add the turmeric,
+              some seasoning and 2 tbsp oil, and toss together. Roast for
+              20-25 minutes until tender. Tip onto a plate and cool. STEP 2
+              Meanwhile boil the rice in salted water until tender, adding
+              the edamame for the last minute of cooking, then drain well.
+              Leave to cool, then tip into a large bowl. Add the roasted
+              cauliflower, lemon juice, cucumber and some seasoning, and
+              toss together. Add the herbs and toss again. Add mint for
+              extra flavor. STEP 3 Whisk together the dressing ingredients.
+              Divide the cauliflower and rice between plates, scatter over
+              the cashews and drizzle with the dressing.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nutrient">
+        <div class="global recipeDetailCard">
+          <div class="recipeDetailsTitle">
+            <h2>Global analysis per portion</h2>
+            <p>Energy, macronutrients and fiber distribution</p>
+          </div>
+          <div class="energyGroup">
+            <div class="energy">Energy</div>
+            <div class="kcalInfo">
+              <div class="kcalValue">351</div>
+              <div class="kcal">kcal</div>
+            </div>
+          </div>
+          <div class="globalCircle">
+            <div class="globalItem" id="fatCircle">
+              <div class="circle red">
+                <div class="circleValue">16<span>g</span></div>
+              </div>
+              <p>Fat</p>
+            </div>
+            <div class="globalItem" id="carbohydrateCircle">
+              <div class="circle orange">
+                <div class="circleValue">45<span>g</span></div>
+              </div>
+              <p>Carbohydrate</p>
+            </div>
+            <div class="globalItem" id="proteinCircle">
+              <div class="circle green">
+                <div class="circleValue">12<span>g</span></div>
+              </div>
+              <p>Protein</p>
+            </div>
+            <div class="globalItem" id="fiberCircle">
+              <div class="circle blue">
+                <div class="circleValue">6<span>g</span></div>
+              </div>
+              <p>Fiber</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="macronutrients recipeDetailCard">
+          <div class="recipeDetailsTitle">
+            <h2>Macronutrients per portion</h2>
+            <p>Macronutrients distribution of the recipe</p>
+          </div>
+          <canvas
+                  id="myChart"
+                  width="290px"
+                  height="290px"
+                  class="macronutrientChart"
+          ></canvas>
+        </div>
+
+        <div
+                class="micronutrient recipeDetailCard"
+                id="macronutrientsValue"
+        >
+          <div class="recipeDetailsTitle">
+            <h2>Macronutrients per portion</h2>
+            <p>Macronutrients distribution of the recipe</p>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Sodium</span>
+            <span class="nutrientValue">1418 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Vitamin A</span>
+            <span class="nutrientValue">18 <span>ug</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Vitamin B-6</span>
+            <span class="nutrientValue">0 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Vitamin B-12</span>
+            <span class="nutrientValue">0 <span>ug</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Vitamin C</span>
+            <span class="nutrientValue">50 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Vitamin D (D2 + D3)</span>
+            <span class="nutrientValue">0 <span>ug</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Vitamin E</span>
+            <span class="nutrientValue">1 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Vitamin K</span>
+            <span class="nutrientValue">87 <span>ug</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Sugars</span>
+            <span class="nutrientValue">13 <span>g</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Calcium</span>
+            <span class="nutrientValue">88 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Iron</span>
+            <span class="nutrientValue">4 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Magnesium</span>
+            <span class="nutrientValue">127 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Phosphorus</span>
+            <span class="nutrientValue">251 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Potassium</span>
+            <span class="nutrientValue">649 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Zinc</span>
+            <span class="nutrientValue">2 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Copper</span>
+            <span class="nutrientValue">1 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Fluoride</span>
+            <span class="nutrientValue">1 <span>ug</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Manganese</span>
+            <span class="nutrientValue">2 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Selenium</span>
+            <span class="nutrientValue">4 <span>ug</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Thiamin</span>
+            <span class="nutrientValue">0 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Riboflavin</span>
+            <span class="nutrientValue">0 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Niacin</span>
+            <span class="nutrientValue">3 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Pantothenic acid</span>
+            <span class="nutrientValue">1 <span>mg</span></span>
+          </div>
+          <div class="nutrientItem">
+            <span class="nutrientName">Folate, total</span>
+            <span class="nutrientValue">156 <span>ug</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../js/recipeDetail.js"></script>
+</body>
 </html>
