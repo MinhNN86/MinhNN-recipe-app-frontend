@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //Load username
   const loginAccountData = JSON.parse(localStorage.getItem("loginAccountData"));
   document.querySelector(
-    ".firstHeader .username"
+      ".firstHeader .username"
   ).textContent = `${loginAccountData.username}`;
 
   //render lựa chọn nutrient
@@ -50,10 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // nếu không yêu thích món ăn nào thì thông báo
   const favoriteRecipeData = JSON.parse(
-    localStorage.getItem("favoriteRecipeData")
+      localStorage.getItem("favoriteRecipeData")
   );
   let favoriteRecipe = favoriteRecipeData.find(
-    (recipe) => recipe.accountId === loginAccountData.id
+      (recipe) => recipe.accountId === loginAccountData.id
   );
   if (favoriteRecipe.idRecipeFavorite.length === 0) {
     Swal.fire({
@@ -66,16 +66,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Đăng xuất tài khoản
 document
-  .querySelector(".sideBar .signOut")
-  .addEventListener("click", function () {
-    localStorage.removeItem("loginAccountData");
-    window.location.href = "signIn.html";
-  });
+    .querySelector(".sideBar .signOut")
+    .addEventListener("click", function () {
+      localStorage.removeItem("loginAccountData");
+      window.location.href = "signIn.html";
+    });
 
 //render lựa chọn category
 document.addEventListener("DOMContentLoaded", function () {
   let categoriesRecipeData = JSON.parse(
-    localStorage.getItem("categoriesRecipeData")
+      localStorage.getItem("categoriesRecipeData")
   );
   let searchCategory = document.getElementById("searchCategory");
   searchCategory.innerHTML = "";
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // lấy dữ liệu
 const favoriteRecipeData =
-  JSON.parse(localStorage.getItem("favoriteRecipeData")) || [];
+    JSON.parse(localStorage.getItem("favoriteRecipeData")) || [];
 const recipeData = JSON.parse(localStorage.getItem("recipesData")) || [];
 const loginAccountData = JSON.parse(localStorage.getItem("loginAccountData"));
 let idAccountLogin = loginAccountData.id;
@@ -110,8 +110,8 @@ function renderRecipes(recipesToRender) {
   // phạm vi công thức hiển thị
   const startIndex = (currentPage - 1) * recipesPerPage;
   const endIndex = Math.min(
-    startIndex + recipesPerPage,
-    recipesToRender.length
+      startIndex + recipesPerPage,
+      recipesToRender.length
   );
   const currentPageRecipes = recipesToRender.slice(startIndex, endIndex);
 
@@ -120,8 +120,8 @@ function renderRecipes(recipesToRender) {
   currentPageRecipes.forEach((recipe) => {
     // Tạo chuỗi các category
     const categoryName = recipe.category
-      .map((cat) => `<span>${cat.name}</span>`)
-      .join(", ");
+        .map((cat) => `<span>${cat.name}</span>`)
+        .join(", ");
 
     // Tính giá trị dinh dưỡng
     const foodData = JSON.parse(localStorage.getItem("foodData"));
@@ -140,36 +140,36 @@ function renderRecipes(recipesToRender) {
         totalEnergy += ((food.macronutrients.energy || 0) * quantity) / 100;
         totalFat += ((food.macronutrients.fat || 0) * quantity) / 100;
         totalCarbohydrate +=
-          ((food.macronutrients.carbohydrate || 0) * quantity) / 100;
+            ((food.macronutrients.carbohydrate || 0) * quantity) / 100;
         totalProtein += ((food.macronutrients.protein || 0) * quantity) / 100;
       }
     });
 
     // Quy đổi về 100g món ăn
     const energyPer100g = totalQuantity
-      ? ((totalEnergy / totalQuantity) * 100).toFixed(0)
-      : 0;
+        ? ((totalEnergy / totalQuantity) * 100).toFixed(0)
+        : 0;
     const fatPer100g = totalQuantity
-      ? ((totalFat / totalQuantity) * 100).toFixed(0)
-      : 0;
+        ? ((totalFat / totalQuantity) * 100).toFixed(0)
+        : 0;
     const carbohydratePer100g = totalQuantity
-      ? ((totalCarbohydrate / totalQuantity) * 100).toFixed(0)
-      : 0;
+        ? ((totalCarbohydrate / totalQuantity) * 100).toFixed(0)
+        : 0;
     const proteinPer100g = totalQuantity
-      ? ((totalProtein / totalQuantity) * 100).toFixed(0)
-      : 0;
+        ? ((totalProtein / totalQuantity) * 100).toFixed(0)
+        : 0;
 
     recipesList.innerHTML += `
       <div class="recipeCard" data-id="${recipe.id}">
         <div class="recipeTag">
         <div class="recipeTagHeader">
           ${
-            recipe.author === loginAccountData.username
-              ? `<img src="../assets/recipes/iconMyRecipes.png" alt="" width="14px" height="14px" />
+        recipe.author === loginAccountData.username
+            ? `<img src="../assets/recipes/iconMyRecipes.png" alt="" width="14px" height="14px" />
               <div class="myRecipe">My recipes</div>`
-              : `<img src="../assets/home/communityRecipes.png" alt="" width="14px" height="14px" />
+            : `<img src="../assets/home/communityRecipes.png" alt="" width="14px" height="14px" />
               <div class="communityRecipe">Community Recipes</div>`
-          }
+    }
         </div>
         <div class="recipePicture">
           <img src="${recipe.coverSrc}" alt="Recipe Picture Error">
@@ -222,8 +222,8 @@ function renderRecipes(recipesToRender) {
   for (let i = 1; i <= totalPages; i++) {
     paginationContainer.innerHTML += `
         <div class="page-item ${
-          i === currentPage ? "active" : ""
-        }" data-page="${i}">
+        i === currentPage ? "active" : ""
+    }" data-page="${i}">
           ${i}
         </div>
       `;
@@ -232,22 +232,22 @@ function renderRecipes(recipesToRender) {
   paginationContainer.innerHTML += `<div class="nextPage"><img src="../assets/home/nextPage.png" alt="" height="13px" /></div>`;
 
   document
-    .querySelector("#pagination .backPage")
-    .addEventListener("click", function () {
-      if (currentPage > 1) {
-        currentPage--;
-        renderRecipes(recipesToRender);
-      }
-    });
+      .querySelector("#pagination .backPage")
+      .addEventListener("click", function () {
+        if (currentPage > 1) {
+          currentPage--;
+          renderRecipes(recipesToRender);
+        }
+      });
 
   document
-    .querySelector("#pagination .nextPage")
-    .addEventListener("click", function () {
-      if (currentPage < totalPages) {
-        currentPage++;
-        renderRecipes(recipesToRender);
-      }
-    });
+      .querySelector("#pagination .nextPage")
+      .addEventListener("click", function () {
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderRecipes(recipesToRender);
+        }
+      });
 
   document.querySelectorAll(".page-item").forEach((item) => {
     item.addEventListener("click", function () {
@@ -269,7 +269,7 @@ function renderRecipes(recipesToRender) {
 function renderFavoriteRecipe() {
   // Lọc ra favorite của tài khoản đang đăng nhập
   const favoriteRecipe = favoriteRecipeData.find(
-    (e) => e.accountId === idAccountLogin
+      (e) => e.accountId === idAccountLogin
   );
   if (!favoriteRecipe || !favoriteRecipe.idRecipeFavorite) {
     return;
@@ -291,18 +291,18 @@ let filteredRecipes = renderFavoriteRecipe();
 function searchNameCategory() {
   currentPage = 1;
   const searchRecipe = document
-    .getElementById("searchRecipe")
-    .value.trim()
-    .toLowerCase();
+      .getElementById("searchRecipe")
+      .value.trim()
+      .toLowerCase();
   const searchCategory = document.getElementById("searchCategory").value;
 
   // lọc dữ liệu
   filteredRecipes = renderFavoriteRecipe().filter((recipe) => {
     const matchesName =
-      searchRecipe === "" || recipe.name.toLowerCase().includes(searchRecipe);
+        searchRecipe === "" || recipe.name.toLowerCase().includes(searchRecipe);
     const matchesCategory =
-      searchCategory === "" ||
-      recipe.category.some((cat) => cat.name === searchCategory);
+        searchCategory === "" ||
+        recipe.category.some((cat) => cat.name === searchCategory);
 
     return matchesName && matchesCategory;
   });
@@ -312,101 +312,102 @@ function searchNameCategory() {
 
 // Gắn sự kiện tìm kiếm
 document
-  .getElementById("searchRecipe")
-  .addEventListener("input", searchNameCategory);
+    .getElementById("searchRecipe")
+    .addEventListener("input", searchNameCategory);
 document
-  .getElementById("searchCategory")
-  .addEventListener("change", searchNameCategory);
+    .getElementById("searchCategory")
+    .addEventListener("change", searchNameCategory);
 
 // Sắp xếp nutrient
 let sortDirection = "desc";
 // thêm chức năng sắp xếp theo dinh dưỡng
 document
-  .getElementById("sortNutrientBtn")
-  .addEventListener("click", function () {
-    const nutrientSelect = document.getElementById("searchNutrient");
-    const selectedNutrient = nutrientSelect.value;
+    .getElementById("sortNutrientBtn")
+    .addEventListener("click", function () {
+      const nutrientSelect = document.getElementById("searchNutrient");
+      const selectedNutrient = nutrientSelect.value;
 
-    if (!selectedNutrient) {
-      return;
-    }
+      if (!selectedNutrient) {
+        return;
+      }
 
-    // Sắp xếp dữ liệu theo giá trị dinh dưỡng
-    const foodData = JSON.parse(localStorage.getItem("foodData"));
+      // Sắp xếp dữ liệu theo giá trị dinh dưỡng
+      const foodData = JSON.parse(localStorage.getItem("foodData"));
 
-    filteredRecipes.sort((a, b) => {
-      // Tính toán giá trị dinh dưỡng cho công thức a
-      let totalQuantityA = 0,
-        totalNutrientA = 0;
-      a.ingredients.forEach((ingredientId) => {
-        const food = foodData.find((e) => e.id === ingredientId);
-        if (food) {
-          const quantity = +food.quantity || 0;
-          totalQuantityA += quantity;
+      filteredRecipes.sort((a, b) => {
+        // Tính toán giá trị dinh dưỡng cho công thức a
+        let totalQuantityA = 0,
+            totalNutrientA = 0;
+        a.ingredients.forEach((ingredientId) => {
+          const food = foodData.find((e) => e.id === ingredientId);
+          if (food) {
+            const quantity = +food.quantity || 0;
+            totalQuantityA += quantity;
 
-          if (selectedNutrient === "energy") {
-            totalNutrientA +=
-              ((food.macronutrients.energy || 0) * quantity) / 100;
-          } else if (selectedNutrient === "fat") {
-            totalNutrientA += ((food.macronutrients.fat || 0) * quantity) / 100;
-          } else if (selectedNutrient === "carbohydrate") {
-            totalNutrientA +=
-              ((food.macronutrients.carbohydrate || 0) * quantity) / 100;
-          } else if (selectedNutrient === "protein") {
-            totalNutrientA +=
-              ((food.macronutrients.protein || 0) * quantity) / 100;
+            if (selectedNutrient === "energy") {
+              totalNutrientA +=
+                  ((food.macronutrients.energy || 0) * quantity) / 100;
+            } else if (selectedNutrient === "fat") {
+              totalNutrientA += ((food.macronutrients.fat || 0) * quantity) / 100;
+            } else if (selectedNutrient === "carbohydrate") {
+              totalNutrientA +=
+                  ((food.macronutrients.carbohydrate || 0) * quantity) / 100;
+            } else if (selectedNutrient === "protein") {
+              totalNutrientA +=
+                  ((food.macronutrients.protein || 0) * quantity) / 100;
+            }
           }
-        }
+        });
+
+        // Tính toán giá trị dinh dưỡng cho công thức b
+        let totalQuantityB = 0,
+            totalNutrientB = 0;
+        b.ingredients.forEach((ingredientId) => {
+          const food = foodData.find((e) => e.id === ingredientId);
+          if (food) {
+            const quantity = +food.quantity || 0;
+            totalQuantityB += quantity;
+
+            if (selectedNutrient === "energy") {
+              totalNutrientB +=
+                  ((food.macronutrients.energy || 0) * quantity) / 100;
+            } else if (selectedNutrient === "fat") {
+              totalNutrientB += ((food.macronutrients.fat || 0) * quantity) / 100;
+            } else if (selectedNutrient === "carbohydrate") {
+              totalNutrientB +=
+                  ((food.macronutrients.carbohydrate || 0) * quantity) / 100;
+            } else if (selectedNutrient === "protein") {
+              totalNutrientB +=
+                  ((food.macronutrients.protein || 0) * quantity) / 100;
+            }
+          }
+        });
+
+        // Quy đổi về giá trị dinh dưỡng trên 100g
+        const valueA = totalQuantityA
+            ? (totalNutrientA / totalQuantityA) * 100
+            : 0;
+        const valueB = totalQuantityB
+            ? (totalNutrientB / totalQuantityB) * 100
+            : 0;
+
+        // Sắp xếp theo hướng được chọn
+        return sortDirection === "desc" ? valueB - valueA : valueA - valueB;
       });
 
-      // Tính toán giá trị dinh dưỡng cho công thức b
-      let totalQuantityB = 0,
-        totalNutrientB = 0;
-      b.ingredients.forEach((ingredientId) => {
-        const food = foodData.find((e) => e.id === ingredientId);
-        if (food) {
-          const quantity = +food.quantity || 0;
-          totalQuantityB += quantity;
+      sortDirection = sortDirection === "asc" ? "desc" : "asc";
 
-          if (selectedNutrient === "energy") {
-            totalNutrientB +=
-              ((food.macronutrients.energy || 0) * quantity) / 100;
-          } else if (selectedNutrient === "fat") {
-            totalNutrientB += ((food.macronutrients.fat || 0) * quantity) / 100;
-          } else if (selectedNutrient === "carbohydrate") {
-            totalNutrientB +=
-              ((food.macronutrients.carbohydrate || 0) * quantity) / 100;
-          } else if (selectedNutrient === "protein") {
-            totalNutrientB +=
-              ((food.macronutrients.protein || 0) * quantity) / 100;
-          }
-        }
-      });
-
-      // Quy đổi về giá trị dinh dưỡng trên 100g
-      const valueA = totalQuantityA
-        ? (totalNutrientA / totalQuantityA) * 100
-        : 0;
-      const valueB = totalQuantityB
-        ? (totalNutrientB / totalQuantityB) * 100
-        : 0;
-
-      // Sắp xếp theo hướng được chọn
-      return sortDirection === "desc" ? valueB - valueA : valueA - valueB;
+      // Reset trang về 1 và render lại danh sách
+      currentPage = 1;
+      renderRecipes(filteredRecipes);
     });
-
-    sortDirection = sortDirection === "asc" ? "desc" : "asc";
-
-    // Reset trang về 1 và render lại danh sách
-    currentPage = 1;
-    renderRecipes(filteredRecipes);
-  });
 
 // testData
 // let recipesData = [
 //   {
 //     id: 1,
-//     coverSrc: "",
+//     coverSrc:
+//       "https://images.immediate.co.uk/production/volatile/sites/2/2017/09/OLI1017-TumericCauliflowerSalad_014532.jpg?quality=90&resize=556,505",
 //     name: "Turmeric Roasted Cauliflower Salad (lowfodmap)",
 //     description:
 //       "Our roasted cauliflower salad with turmeric is low in calories and packed with punchy flavor.",
@@ -426,7 +427,8 @@ document
 //   },
 //   {
 //     id: 2,
-//     coverSrc: "",
+//     coverSrc:
+//       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-Ne9niCIuEcfJsCduQ08v4cm1BVSIdc3Gbw&s",
 //     name: "Grilled Chicken with Lemon and Herbs",
 //     description:
 //       "Juicy grilled chicken breasts marinated in a lemon and herb sauce.",
@@ -446,7 +448,8 @@ document
 //   },
 //   {
 //     id: 3,
-//     coverSrc: "",
+//     coverSrc:
+//       "https://www.healthyfood.com/wp-content/uploads/2019/07/Creamy-pumpkin-soup.jpg",
 //     name: "Creamy Pumpkin Soup",
 //     description:
 //       "A comforting and creamy soup made with roasted pumpkin and a touch of cream.",
@@ -466,7 +469,7 @@ document
 //   },
 //   {
 //     id: 4,
-//     coverSrc: "",
+//     coverSrc: "https://cdn.tgdd.vn/2021/01/CookProduct/1200-1200x676-16.jpg",
 //     name: "Spaghetti Aglio e Olio",
 //     description: "Simple and classic Italian pasta with garlic and olive oil.",
 //     author: "Marco Rossi",
@@ -485,7 +488,8 @@ document
 //   },
 //   {
 //     id: 5,
-//     coverSrc: "",
+//     coverSrc:
+//       "https://www.eatingwell.com/thmb/PqRN1f14fA3zdvpFMGi7I19FCPU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/hearty-chickpea-spinach-stew-270568-1x1-b27d319be4504a39ba4d4184d1a3b2cb.jpg",
 //     name: "Chickpea & Spinach Stew",
 //     description:
 //       "A hearty and healthy stew made with chickpeas, spinach, and warm spices.",
@@ -505,7 +509,8 @@ document
 //   },
 //   {
 //     id: 6,
-//     coverSrc: "",
+//     coverSrc:
+//       "https://www.funfoodfrolic.com/wp-content/uploads/2020/03/Tofu-Stir-Fry-Thumbnail.jpg",
 //     name: "Tofu Stir-Fry with Veggies",
 //     description:
 //       "Colorful stir-fried vegetables tossed with crispy tofu in a savory sauce.",
@@ -525,7 +530,8 @@ document
 //   },
 //   {
 //     id: 7,
-//     coverSrc: "",
+//     coverSrc:
+//       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG4tEU7GPCnCsR5c-zvqeMJPqHIFmVilASSw&s",
 //     name: "Baked Salmon with Dill",
 //     description: "Tender salmon fillet baked with lemon slices and fresh dill.",
 //     author: "Elena Petrova",
@@ -544,7 +550,8 @@ document
 //   },
 //   {
 //     id: 8,
-//     coverSrc: "",
+//     coverSrc:
+//       "https://nomoneynotime.com.au/uploads/recipes/shutterstock_1926492050-1.jpg",
 //     name: "Avocado Toast with Poached Egg",
 //     description:
 //       "A nourishing breakfast of wholegrain toast topped with smashed avocado and a poached egg.",
@@ -564,7 +571,8 @@ document
 //   },
 //   {
 //     id: 9,
-//     coverSrc: "",
+//     coverSrc:
+//       "https://embed.widencdn.net/img/beef/t9bwp7fitq/exact/Stuffed%20Peppers%20-%20NCBA%20Beef%20Aug%20202431717.jpg?keep=c&u=7fueml",
 //     name: "Stuffed Bell Peppers",
 //     description:
 //       "Bell peppers filled with a tasty mix of rice, beans, and herbs.",
@@ -584,7 +592,8 @@ document
 //   },
 //   {
 //     id: 10,
-//     coverSrc: "",
+//     coverSrc:
+//       "https://www.aforkstale.com/wp-content/uploads/mediterranean-quinoa-salad-with-feta.-4.jpg",
 //     name: "Quinoa Salad with Feta and Olives",
 //     description:
 //       "A Mediterranean-inspired quinoa salad with feta cheese and olives.",

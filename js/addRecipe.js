@@ -44,14 +44,14 @@ document.addEventListener("DOMContentLoaded", function () {
   //Load username
   const loginAccountData = JSON.parse(localStorage.getItem("loginAccountData"));
   document.querySelector(
-    ".firstHeader .username"
+      ".firstHeader .username"
   ).textContent = `${loginAccountData.username}`;
 });
 
 // render Category
 function renderCategory() {
   let categoriesRecipeData = JSON.parse(
-    localStorage.getItem("categoriesRecipeData") || "[]"
+      localStorage.getItem("categoriesRecipeData") || "[]"
   );
   let chooseCategory = document.getElementById("chooseCategory");
   chooseCategory.innerHTML = "";
@@ -63,18 +63,18 @@ function renderCategory() {
 document.addEventListener("DOMContentLoaded", function () {
   renderCategory();
   document
-    .getElementById("chooseCategory")
-    .addEventListener("change", function () {
-      let valueCategory = document.getElementById("chooseCategory").value;
-      if (valueCategory) {
-        let inputCategory = document.getElementById("inputCategory");
-        if (inputCategory.value) {
-          inputCategory.value += ", ";
+      .getElementById("chooseCategory")
+      .addEventListener("change", function () {
+        let valueCategory = document.getElementById("chooseCategory").value;
+        if (valueCategory) {
+          let inputCategory = document.getElementById("inputCategory");
+          if (inputCategory.value) {
+            inputCategory.value += ", ";
+          }
+          inputCategory.value += valueCategory;
+          document.getElementById("chooseCategory").value = "";
         }
-        inputCategory.value += valueCategory;
-        document.getElementById("chooseCategory").value = "";
-      }
-    });
+      });
   // reset list food
   document.querySelector(".recipeDetail .ingredientList").innerHTML = "";
   // render Author
@@ -96,11 +96,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Đăng xuất tài khoản
 document
-  .querySelector(".sideBar .signOut")
-  .addEventListener("click", function () {
-    localStorage.removeItem("loginAccountData");
-    window.location.href = "signIn.html";
-  });
+    .querySelector(".sideBar .signOut")
+    .addEventListener("click", function () {
+      localStorage.removeItem("loginAccountData");
+      window.location.href = "signIn.html";
+    });
 
 const foodData = JSON.parse(localStorage.getItem("foodData") || "[]");
 let currentPage = 1;
@@ -161,8 +161,8 @@ function renderFood(foodToRender) {
   for (let i = 1; i <= totalPages; i++) {
     paginationContainer.innerHTML += `
         <div class="page-item ${
-          i === currentPage ? "active" : ""
-        }" data-page="${i}">
+        i === currentPage ? "active" : ""
+    }" data-page="${i}">
           ${i}
         </div>
       `;
@@ -170,21 +170,21 @@ function renderFood(foodToRender) {
   paginationContainer.innerHTML += `<div class="nextPage"><img src="../assets/home/nextPage.png" alt="" height="13px" /></div>`;
 
   document
-    .querySelector(".pagination .backPage")
-    .addEventListener("click", function () {
-      if (currentPage > 1) {
-        currentPage--;
-        renderFood(foodToRender);
-      }
-    });
+      .querySelector(".pagination .backPage")
+      .addEventListener("click", function () {
+        if (currentPage > 1) {
+          currentPage--;
+          renderFood(foodToRender);
+        }
+      });
   document
-    .querySelector(".pagination .nextPage")
-    .addEventListener("click", function () {
-      if (currentPage < totalPages) {
-        currentPage++;
-        renderFood(foodToRender);
-      }
-    });
+      .querySelector(".pagination .nextPage")
+      .addEventListener("click", function () {
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderFood(foodToRender);
+        }
+      });
   document.querySelectorAll(".page-item").forEach((item) => {
     item.addEventListener("click", function () {
       currentPage = parseInt(this.getAttribute("data-page"));
@@ -248,16 +248,16 @@ function renderFoodCard(inputIngredient) {
   }
   //gán vào nút xóa food
   document
-    .querySelectorAll(".ingredientCard .removeFood")
-    .forEach((card, index) => {
-      card.addEventListener("click", function () {
-        inputIngredient.splice(index, 1);
-        getInputFoodData();
-        renderFoodCard(inputIngredient);
-        renderNutrient(inputIngredient);
-        renderFinalWeight(inputIngredient);
+      .querySelectorAll(".ingredientCard .removeFood")
+      .forEach((card, index) => {
+        card.addEventListener("click", function () {
+          inputIngredient.splice(index, 1);
+          getInputFoodData();
+          renderFoodCard(inputIngredient);
+          renderNutrient(inputIngredient);
+          renderFinalWeight(inputIngredient);
+        });
       });
-    });
 }
 
 //hàm in dinh dưỡng
@@ -461,7 +461,7 @@ function renderNutrient(inputIngredient) {
       totalRiboflavin += +(food.micronutrients.riboflavin || 0).toFixed(0);
       totalNiacin += +(food.micronutrients.niacin || 0).toFixed(0);
       totalPantothenicAcid += +(
-        food.micronutrients.pantothenicAcid || 0
+          food.micronutrients.pantothenicAcid || 0
       ).toFixed(0);
       totalFolate += +(food.micronutrients.folateTotal || 0).toFixed(0);
     }
@@ -709,21 +709,21 @@ let filteredFood = foodData;
 function searchNameCategory() {
   currentPage = 1;
   const searchFood = document
-    .getElementById("searchFood")
-    .value.trim()
-    .toLowerCase();
+      .getElementById("searchFood")
+      .value.trim()
+      .toLowerCase();
   const searchCategory = document
-    .getElementById("searchCategory")
-    .value.trim()
-    .toLowerCase();
+      .getElementById("searchCategory")
+      .value.trim()
+      .toLowerCase();
   const foodData = JSON.parse(localStorage.getItem("foodData")) || [];
 
   //Lọc dữ liệu dựa trên cả tên và thể loại
   filteredFood = foodData.filter((food) => {
     const matchesName = food.name.toLowerCase().includes(searchFood);
     const matchesCategory =
-      searchCategory === "" ||
-      food.category.toLowerCase().includes(searchCategory);
+        searchCategory === "" ||
+        food.category.toLowerCase().includes(searchCategory);
     return matchesName && matchesCategory;
   });
 
@@ -732,43 +732,43 @@ function searchNameCategory() {
 
 // Gắn sự kiện cho cả hai input tìm kiếm
 document
-  .getElementById("searchFood")
-  .addEventListener("input", searchNameCategory);
+    .getElementById("searchFood")
+    .addEventListener("input", searchNameCategory);
 document
-  .getElementById("searchCategory")
-  .addEventListener("input", searchNameCategory);
+    .getElementById("searchCategory")
+    .addEventListener("input", searchNameCategory);
 
 // Sắp xếp nutrient
 let sortDirection = "desc";
 // Thêm chức năng sắp xếp theo dinh dưỡng
 document
-  .getElementById("sortNutrientBtn")
-  .addEventListener("click", function () {
-    const nutrientSelect = document.getElementById("inputNutrient");
-    const selectedNutrient = nutrientSelect.value;
+    .getElementById("sortNutrientBtn")
+    .addEventListener("click", function () {
+      const nutrientSelect = document.getElementById("inputNutrient");
+      const selectedNutrient = nutrientSelect.value;
 
-    //Kiểm tra xem người dùng đã chọn chưa
-    if (!selectedNutrient) {
-      return;
-    }
-    filteredFood.sort((a, b) => {
-      let valueA = a.macronutrients[selectedNutrient] || 0;
-      let valueB = b.macronutrients[selectedNutrient] || 0;
+      //Kiểm tra xem người dùng đã chọn chưa
+      if (!selectedNutrient) {
+        return;
+      }
+      filteredFood.sort((a, b) => {
+        let valueA = a.macronutrients[selectedNutrient] || 0;
+        let valueB = b.macronutrients[selectedNutrient] || 0;
 
-      valueA = parseFloat(valueA);
-      valueB = parseFloat(valueB);
+        valueA = parseFloat(valueA);
+        valueB = parseFloat(valueB);
 
-      if (isNaN(valueA)) valueA = 0;
-      if (isNaN(valueB)) valueB = 0;
+        if (isNaN(valueA)) valueA = 0;
+        if (isNaN(valueB)) valueB = 0;
 
-      return sortDirection === "asc" ? valueA - valueB : valueB - valueA;
+        return sortDirection === "asc" ? valueA - valueB : valueB - valueA;
+      });
+
+      sortDirection = sortDirection === "asc" ? "desc" : "asc";
+
+      currentPage = 1;
+      renderFood(filteredFood);
     });
-
-    sortDirection = sortDirection === "asc" ? "desc" : "asc";
-
-    currentPage = 1;
-    renderFood(filteredFood);
-  });
 
 // Up ảnh món ăn
 let instructAddImg = false;
@@ -776,7 +776,7 @@ document.querySelector(".addImgRecipe").addEventListener("click", function () {
   if (!instructAddImg) {
     Swal.fire({
       title: "Thêm ảnh",
-      text: "Hãy lên trên mạng tìm hình ảnh món ăn và sao chép LINK rồi dán vào ô",
+      text: "Dán link ảnh món ăn (nên chọn ảnh nằm ngang để hiển thị đẹp hơn)",
       icon: "question",
     });
     instructAddImg = true;
@@ -788,19 +788,19 @@ document.querySelector(".addImgRecipe").addEventListener("click", function () {
   textAddImg.style.display = "none";
   inputLinkImg.style.display = "block";
   document
-    .getElementById("inputLinkImg")
-    .addEventListener("input", function () {
-      // Lấy link ảnh
-      let linkImg = this.value;
+      .getElementById("inputLinkImg")
+      .addEventListener("input", function () {
+        // Lấy link ảnh
+        let linkImg = this.value;
 
-      // Thêm link ảnh vào thẻ img
-      let addLinkImg = document.querySelector(".addImgRecipe .imgRecipe img");
-      addLinkImg.src = linkImg;
-      addLinkImg.style.display = "block";
+        // Thêm link ảnh vào thẻ img
+        let addLinkImg = document.querySelector(".addImgRecipe .imgRecipe img");
+        addLinkImg.src = linkImg;
+        addLinkImg.style.display = "block";
 
-      // hiển thị ảnh
-      imgRecipe.style.display = "block";
-    });
+        // hiển thị ảnh
+        imgRecipe.style.display = "block";
+      });
 });
 
 // Hàm lấy dữ liệu trong JS
@@ -821,27 +821,27 @@ document.getElementById("pushRecipe").addEventListener("click", function () {
   // lấy thông tin của món ăn và kiểm tra
   let inputName = document.getElementById("inputName").value.trim();
   let inputDescription = document
-    .getElementById("inputDescription")
-    .value.trim();
+      .getElementById("inputDescription")
+      .value.trim();
   let inputTotalTime = document.getElementById("inputTotalTime").value.trim();
   let inputPreparationTime = document
-    .getElementById("inputPreparationTime")
-    .value.trim();
+      .getElementById("inputPreparationTime")
+      .value.trim();
   let inputFinalWeight = document.getElementById("inputFinalWeight").value;
   let inputPortions = document.getElementById("inputPortions").value.trim();
   let inputCategory = document.getElementById("inputCategory").value.trim();
   let inputLinkImg = document.getElementById("inputLinkImg").value.trim();
   let inputCookingMethod = document
-    .getElementById("inputCookingMethod")
-    .value.trim();
+      .getElementById("inputCookingMethod")
+      .value.trim();
   if (
-    !inputName ||
-    !inputDescription ||
-    !inputTotalTime ||
-    !inputPreparationTime ||
-    !inputPortions ||
-    !inputCategory ||
-    !inputCookingMethod
+      !inputName ||
+      !inputDescription ||
+      !inputTotalTime ||
+      !inputPreparationTime ||
+      !inputPortions ||
+      !inputCategory ||
+      !inputCookingMethod
   ) {
     Swal.fire({
       icon: "error",
@@ -923,7 +923,7 @@ document.getElementById("pushRecipe").addEventListener("click", function () {
 function checkCategory(inputCategory) {
   let inputCategoryArray = inputCategory.split(",").map((cat) => cat.trim());
   let categoriesRecipeData = JSON.parse(
-    localStorage.getItem("categoriesRecipeData") || []
+      localStorage.getItem("categoriesRecipeData") || []
   );
   inputCategoryArray.forEach((category) => {
     if (!categoriesRecipeData.some((cat) => cat.name === category)) {
@@ -934,8 +934,8 @@ function checkCategory(inputCategory) {
     }
   });
   localStorage.setItem(
-    "categoriesRecipeData",
-    JSON.stringify(categoriesRecipeData)
+      "categoriesRecipeData",
+      JSON.stringify(categoriesRecipeData)
   );
 }
 

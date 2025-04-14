@@ -278,7 +278,7 @@
 .recipeTag .recipePicture img {
   margin-left: 10px;
   width: 80%;
-  height: auto;
+  height: 130px;
   border-radius: 5px;
   margin-bottom: 10px;
   object-fit: cover;
