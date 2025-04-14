@@ -262,6 +262,12 @@
   color: #ea9f77;
 }
 
+.recipeTag .recipeTagHeader .myRecipe {
+  font-size: 11px;
+  font-weight: bold;
+  color: #2BA0CC;
+}
+
 .recipeTag .recipePicture {
   width: 100%;
   height: 100%;
