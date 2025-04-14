@@ -88,10 +88,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // lấy dữ liệu
-let favoriteRecipeData =
+const favoriteRecipeData =
   JSON.parse(localStorage.getItem("favoriteRecipeData")) || [];
-let recipeData = JSON.parse(localStorage.getItem("recipesData")) || [];
-let loginAccountData = JSON.parse(localStorage.getItem("loginAccountData"));
+const recipeData = JSON.parse(localStorage.getItem("recipesData")) || [];
+const loginAccountData = JSON.parse(localStorage.getItem("loginAccountData"));
 let idAccountLogin = loginAccountData.id;
 let currentPage = 1;
 
@@ -163,8 +163,13 @@ function renderRecipes(recipesToRender) {
       <div class="recipeCard" data-id="${recipe.id}">
         <div class="recipeTag">
         <div class="recipeTagHeader">
-          <img src="../assets/home/communityRecipes.png" alt="" width="14px" height="14px" />
-          <div class="communityRecipe">Community Recipes</div>
+          ${
+            recipe.author === loginAccountData.username
+              ? `<img src="../assets/recipes/iconMyRecipes.png" alt="" width="14px" height="14px" />
+              <div class="myRecipe">My recipes</div>`
+              : `<img src="../assets/home/communityRecipes.png" alt="" width="14px" height="14px" />
+              <div class="communityRecipe">Community Recipes</div>`
+          }
         </div>
         <div class="recipePicture">
           <img src="${recipe.coverSrc}" alt="Recipe Picture Error">

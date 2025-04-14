@@ -21,15 +21,15 @@ function hideNotification(element) {
 
 let accountData = JSON.parse(localStorage.getItem("accountData")) || [];
 let favoriteRecipeData =
-    JSON.parse(localStorage.getItem("favoriteRecipeData")) || [];
+  JSON.parse(localStorage.getItem("favoriteRecipeData")) || [];
 document.getElementById("btn-singUp").addEventListener("click", function () {
   let error = document.querySelector(".error");
   let inputEmail = document.getElementById("inputEmail").value.trim();
   let inputUsername = document.getElementById("inputUsername").value.trim();
   let inputPassword = document.getElementById("inputPassword").value.trim();
   let inputConfirmPassword = document
-      .getElementById("inputConfirmPassword")
-      .value.trim();
+    .getElementById("inputConfirmPassword")
+    .value.trim();
   let inputError = document.getElementById("inputError");
   inputError.innerHTML = "";
   let check = true;
@@ -73,7 +73,7 @@ document.getElementById("btn-singUp").addEventListener("click", function () {
 
     // Thêm id cho người dùng mới
     let inputAccountId =
-        accountData.length > 0 ? accountData[accountData.length - 1].id + 1 : 1;
+      accountData.length > 0 ? accountData[accountData.length - 1].id + 1 : 1;
 
     accountData.push({
       id: inputAccountId,
@@ -88,8 +88,8 @@ document.getElementById("btn-singUp").addEventListener("click", function () {
       idRecipeFavorite: [],
     });
     localStorage.setItem(
-        "favoriteRecipeData",
-        JSON.stringify(favoriteRecipeData)
+      "favoriteRecipeData",
+      JSON.stringify(favoriteRecipeData)
     );
     setTimeout(function () {
       window.location.href = "signIn.html";
@@ -113,10 +113,10 @@ document.getElementById("btn-singUp").addEventListener("click", function () {
 function checkDataBase() {
   let accountData = JSON.parse(localStorage.getItem("accountData"));
   let categoriesRecipeData = JSON.parse(
-      localStorage.getItem("categoriesRecipeData")
+    localStorage.getItem("categoriesRecipeData")
   );
   let favoriteRecipeData = JSON.parse(
-      localStorage.getItem("favoriteRecipeData")
+    localStorage.getItem("favoriteRecipeData")
   );
   let foodData = JSON.parse(localStorage.getItem("foodData"));
   let recipesData = JSON.parse(localStorage.getItem("recipesData"));
@@ -180,12 +180,12 @@ function checkDataBase() {
 
   localStorage.setItem("accountData", JSON.stringify(accountData));
   localStorage.setItem(
-      "categoriesRecipeData",
-      JSON.stringify(categoriesRecipeData)
+    "categoriesRecipeData",
+    JSON.stringify(categoriesRecipeData)
   );
   localStorage.setItem(
-      "favoriteRecipeData",
-      JSON.stringify(favoriteRecipeData)
+    "favoriteRecipeData",
+    JSON.stringify(favoriteRecipeData)
   );
   localStorage.setItem("foodData", JSON.stringify(foodData));
   localStorage.setItem("recipesData", JSON.stringify(recipesData));

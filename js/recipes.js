@@ -69,11 +69,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Đăng xuất tài khoản
 document
-    .querySelector(".sideBar .signOut")
-    .addEventListener("click", function () {
-      localStorage.removeItem("loginAccountData");
-      window.location.href = "signIn.html";
-    });
+  .querySelector(".sideBar .signOut")
+  .addEventListener("click", function () {
+    localStorage.removeItem("loginAccountData");
+    window.location.href = "signIn.html";
+  });
 
 // chuyển hướng sang trang addRecipe
 document.getElementById("addRecipe").addEventListener("click", function () {
@@ -95,8 +95,8 @@ function renderRecipes(recipesToRender) {
 
   const startIndex = (currentPage - 1) * recipesPerPage;
   const endIndex = Math.min(
-      startIndex + recipesPerPage,
-      recipesToRender.length
+    startIndex + recipesPerPage,
+    recipesToRender.length
   );
   const currentPageRecipes = recipesToRender.slice(startIndex, endIndex);
 
@@ -105,17 +105,17 @@ function renderRecipes(recipesToRender) {
 
   currentPageRecipes.forEach((recipe) => {
     const categoryName = recipe.category
-        .map((cat) => `<span>${cat.name}</span>`)
-        .join(", ");
+      .map((cat) => `<span>${cat.name}</span>`)
+      .join(", ");
 
     // lọc những công thức mình đã thích
     let checkFavoriteRecipe = false;
     const favoriteRecipeData = JSON.parse(
-        localStorage.getItem("favoriteRecipeData")
+      localStorage.getItem("favoriteRecipeData")
     );
     let listRecipeFavorite = [];
     let favoriteRecipeAccount = favoriteRecipeData.find(
-        (e) => e.accountId === loginAccountData.id
+      (e) => e.accountId === loginAccountData.id
     );
     listRecipeFavorite.push(...favoriteRecipeAccount.idRecipeFavorite);
     if (listRecipeFavorite.some((e) => e === recipe.id)) {
@@ -141,24 +141,24 @@ function renderRecipes(recipesToRender) {
         totalEnergy += ((food.macronutrients.energy || 0) * quantity) / 100;
         totalFat += ((food.macronutrients.fat || 0) * quantity) / 100;
         totalCarbohydrate +=
-            ((food.macronutrients.carbohydrate || 0) * quantity) / 100;
+          ((food.macronutrients.carbohydrate || 0) * quantity) / 100;
         totalProtein += ((food.macronutrients.protein || 0) * quantity) / 100;
       }
     });
 
     // Quy đổi về 100g món ăn
     const energyPer100g = totalQuantity
-        ? ((totalEnergy / totalQuantity) * 100).toFixed(0)
-        : 0;
+      ? ((totalEnergy / totalQuantity) * 100).toFixed(0)
+      : 0;
     const fatPer100g = totalQuantity
-        ? ((totalFat / totalQuantity) * 100).toFixed(0)
-        : 0;
+      ? ((totalFat / totalQuantity) * 100).toFixed(0)
+      : 0;
     const carbohydratePer100g = totalQuantity
-        ? ((totalCarbohydrate / totalQuantity) * 100).toFixed(0)
-        : 0;
+      ? ((totalCarbohydrate / totalQuantity) * 100).toFixed(0)
+      : 0;
     const proteinPer100g = totalQuantity
-        ? ((totalProtein / totalQuantity) * 100).toFixed(0)
-        : 0;
+      ? ((totalProtein / totalQuantity) * 100).toFixed(0)
+      : 0;
 
     if (recipe.author === loginAccountData.username) {
       recipeList.innerHTML += `
@@ -177,10 +177,10 @@ function renderRecipes(recipesToRender) {
             <div class="recipeName" data-id="${recipe.id}">${recipe.name}</div>
             <div class="recipeLike" data-id="${recipe.id}">
               ${
-          checkFavoriteRecipe
-              ? `<img src="../assets/home/addFavoriteRecipes.png" alt="" width="13px" />`
-              : `<img src="../assets/home/favoriteRecipes.png" alt="" width="13px" />`
-      }
+                checkFavoriteRecipe
+                  ? `<img src="../assets/home/addFavoriteRecipes.png" alt="" width="13px" />`
+                  : `<img src="../assets/home/favoriteRecipes.png" alt="" width="13px" />`
+              }
               <div class="numOfLike" >${recipe.likes}</div>
             </div>
           </div>
@@ -231,10 +231,10 @@ function renderRecipes(recipesToRender) {
           <div class="recipeName" data-id="${recipe.id}">${recipe.name}</div>
           <div class="recipeLike" data-id="${recipe.id}">
             ${
-          checkFavoriteRecipe
-              ? `<img src="../assets/home/addFavoriteRecipes.png" alt="" width="13px" />`
-              : `<img src="../assets/home/favoriteRecipes.png" alt="" width="13px" />`
-      }
+              checkFavoriteRecipe
+                ? `<img src="../assets/home/addFavoriteRecipes.png" alt="" width="13px" />`
+                : `<img src="../assets/home/favoriteRecipes.png" alt="" width="13px" />`
+            }
             <div class="numOfLike" >${recipe.likes}</div>
           </div>
         </div>
@@ -278,29 +278,29 @@ function renderRecipes(recipesToRender) {
     paginationContainer.innerHTML += `
       <div class="page-item${
         i === currentPage ? " active" : ""
-    }" data-page="${i}">${i}</div>
+      }" data-page="${i}">${i}</div>
     `;
   }
   paginationContainer.innerHTML += `<div class="nextPage"><img src="../assets/home/nextPage.png" alt="" height="13px" /></div>`;
 
   // Gắn sự kiện phân trang
   document
-      .querySelector("#pagination .backPage")
-      .addEventListener("click", function () {
-        if (currentPage > 1) {
-          currentPage--;
-          renderRecipes(recipesToRender);
-        }
-      });
+    .querySelector("#pagination .backPage")
+    .addEventListener("click", function () {
+      if (currentPage > 1) {
+        currentPage--;
+        renderRecipes(recipesToRender);
+      }
+    });
 
   document
-      .querySelector("#pagination .nextPage")
-      .addEventListener("click", function () {
-        if (currentPage < totalPages) {
-          currentPage++;
-          renderRecipes(recipesToRender);
-        }
-      });
+    .querySelector("#pagination .nextPage")
+    .addEventListener("click", function () {
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderRecipes(recipesToRender);
+      }
+    });
 
   document.querySelectorAll(".page-item").forEach((item) => {
     item.addEventListener("click", function () {
@@ -324,10 +324,10 @@ function renderRecipes(recipesToRender) {
       // Lấy dữ liệu
       const recipeId = +like.getAttribute("data-id");
       const loginAccountData = JSON.parse(
-          localStorage.getItem("loginAccountData")
+        localStorage.getItem("loginAccountData")
       );
       let favoriteRecipeData = JSON.parse(
-          localStorage.getItem("favoriteRecipeData")
+        localStorage.getItem("favoriteRecipeData")
       );
       let recipesData = JSON.parse(localStorage.getItem("recipesData"));
 
@@ -346,15 +346,15 @@ function renderRecipes(recipesToRender) {
 
       // Tìm danh sách yêu thích của người dùng
       let favoriteRecipeAccount = favoriteRecipeData.find(
-          (e) => e.accountId === loginAccountData.id
+        (e) => e.accountId === loginAccountData.id
       );
 
       if (favoriteRecipeAccount.idRecipeFavorite.includes(recipeId)) {
         // Hủy yêu thích
         favoriteRecipeAccount.idRecipeFavorite =
-            favoriteRecipeAccount.idRecipeFavorite.filter(
-                (id) => id !== recipeId
-            );
+          favoriteRecipeAccount.idRecipeFavorite.filter(
+            (id) => id !== recipeId
+          );
         recipe.likes--;
 
         // Cập nhật giao diện nút thích
@@ -371,8 +371,8 @@ function renderRecipes(recipesToRender) {
       // Lưu dữ liệu vào localStorage
       localStorage.setItem("recipesData", JSON.stringify(recipesData));
       localStorage.setItem(
-          "favoriteRecipeData",
-          JSON.stringify(favoriteRecipeData)
+        "favoriteRecipeData",
+        JSON.stringify(favoriteRecipeData)
       );
 
       // Cập nhật số lượt thích hiển thị
@@ -401,7 +401,7 @@ renderAllRecipes();
 //render lựa chọn category
 document.addEventListener("DOMContentLoaded", function () {
   let categoriesRecipeData = JSON.parse(
-      localStorage.getItem("categoriesRecipeData")
+    localStorage.getItem("categoriesRecipeData")
   );
   let searchCategory = document.getElementById("searchCategory");
   searchCategory.innerHTML = "";
@@ -430,17 +430,17 @@ let filteredRecipes = recipesData;
 function searchNameCategory() {
   currentPage = 1;
   const searchRecipe = document
-      .getElementById("searchRecipe")
-      .value.trim()
-      .toLowerCase();
+    .getElementById("searchRecipe")
+    .value.trim()
+    .toLowerCase();
   const searchCategory = document.getElementById("searchCategory").value;
 
   // lọc dữ liệu
   filteredRecipes = recipesData.filter((recipe) => {
     const matchesName = recipe.name.toLowerCase().includes(searchRecipe);
     const matchesCategory =
-        searchCategory === "" ||
-        recipe.category.some((cat) => cat.name === searchCategory);
+      searchCategory === "" ||
+      recipe.category.some((cat) => cat.name === searchCategory);
 
     return matchesName && matchesCategory;
   });
@@ -448,125 +448,125 @@ function searchNameCategory() {
   renderRecipes(filteredRecipes);
 }
 document
-    .getElementById("searchRecipe")
-    .addEventListener("input", searchNameCategory);
+  .getElementById("searchRecipe")
+  .addEventListener("input", searchNameCategory);
 document
-    .getElementById("searchCategory")
-    .addEventListener("change", searchNameCategory);
+  .getElementById("searchCategory")
+  .addEventListener("change", searchNameCategory);
 
 // Sắp xếp nutrient
 let sortDirection = "desc";
 // thêm chức năng sắp xếp theo dinh dưỡng
 document
-    .getElementById("sortNutrientBtn")
-    .addEventListener("click", function () {
-      const nutrientSelect = document.getElementById("searchNutrient");
-      const selectedNutrient = nutrientSelect.value;
+  .getElementById("sortNutrientBtn")
+  .addEventListener("click", function () {
+    const nutrientSelect = document.getElementById("searchNutrient");
+    const selectedNutrient = nutrientSelect.value;
 
-      if (!selectedNutrient) {
-        return;
-      }
+    if (!selectedNutrient) {
+      return;
+    }
 
-      // Sắp xếp dữ liệu theo giá trị dinh dưỡng
-      const foodData = JSON.parse(localStorage.getItem("foodData"));
+    // Sắp xếp dữ liệu theo giá trị dinh dưỡng
+    const foodData = JSON.parse(localStorage.getItem("foodData"));
 
-      filteredRecipes.sort((a, b) => {
-        // Tính toán giá trị dinh dưỡng cho công thức a
-        let totalQuantityA = 0,
-            totalNutrientA = 0;
-        a.ingredients.forEach((ingredientId) => {
-          const food = foodData.find((e) => e.id === ingredientId);
-          if (food) {
-            const quantity = +food.quantity || 0;
-            totalQuantityA += quantity;
+    filteredRecipes.sort((a, b) => {
+      // Tính toán giá trị dinh dưỡng cho công thức a
+      let totalQuantityA = 0,
+        totalNutrientA = 0;
+      a.ingredients.forEach((ingredientId) => {
+        const food = foodData.find((e) => e.id === ingredientId);
+        if (food) {
+          const quantity = +food.quantity || 0;
+          totalQuantityA += quantity;
 
-            if (selectedNutrient === "energy") {
-              totalNutrientA +=
-                  ((food.macronutrients.energy || 0) * quantity) / 100;
-            } else if (selectedNutrient === "fat") {
-              totalNutrientA += ((food.macronutrients.fat || 0) * quantity) / 100;
-            } else if (selectedNutrient === "carbohydrate") {
-              totalNutrientA +=
-                  ((food.macronutrients.carbohydrate || 0) * quantity) / 100;
-            } else if (selectedNutrient === "protein") {
-              totalNutrientA +=
-                  ((food.macronutrients.protein || 0) * quantity) / 100;
-            }
+          if (selectedNutrient === "energy") {
+            totalNutrientA +=
+              ((food.macronutrients.energy || 0) * quantity) / 100;
+          } else if (selectedNutrient === "fat") {
+            totalNutrientA += ((food.macronutrients.fat || 0) * quantity) / 100;
+          } else if (selectedNutrient === "carbohydrate") {
+            totalNutrientA +=
+              ((food.macronutrients.carbohydrate || 0) * quantity) / 100;
+          } else if (selectedNutrient === "protein") {
+            totalNutrientA +=
+              ((food.macronutrients.protein || 0) * quantity) / 100;
           }
-        });
-
-        // Tính toán giá trị dinh dưỡng cho công thức b
-        let totalQuantityB = 0,
-            totalNutrientB = 0;
-        b.ingredients.forEach((ingredientId) => {
-          const food = foodData.find((e) => e.id === ingredientId);
-          if (food) {
-            const quantity = +food.quantity || 0;
-            totalQuantityB += quantity;
-
-            if (selectedNutrient === "energy") {
-              totalNutrientB +=
-                  ((food.macronutrients.energy || 0) * quantity) / 100;
-            } else if (selectedNutrient === "fat") {
-              totalNutrientB += ((food.macronutrients.fat || 0) * quantity) / 100;
-            } else if (selectedNutrient === "carbohydrate") {
-              totalNutrientB +=
-                  ((food.macronutrients.carbohydrate || 0) * quantity) / 100;
-            } else if (selectedNutrient === "protein") {
-              totalNutrientB +=
-                  ((food.macronutrients.protein || 0) * quantity) / 100;
-            }
-          }
-        });
-
-        // Quy đổi về giá trị dinh dưỡng trên 100g
-        const valueA = totalQuantityA
-            ? (totalNutrientA / totalQuantityA) * 100
-            : 0;
-        const valueB = totalQuantityB
-            ? (totalNutrientB / totalQuantityB) * 100
-            : 0;
-
-        // Sắp xếp theo hướng được chọn
-        return sortDirection === "desc" ? valueB - valueA : valueA - valueB;
+        }
       });
 
-      sortDirection = sortDirection === "asc" ? "desc" : "asc";
+      // Tính toán giá trị dinh dưỡng cho công thức b
+      let totalQuantityB = 0,
+        totalNutrientB = 0;
+      b.ingredients.forEach((ingredientId) => {
+        const food = foodData.find((e) => e.id === ingredientId);
+        if (food) {
+          const quantity = +food.quantity || 0;
+          totalQuantityB += quantity;
 
-      // Reset trang về 1 và render lại danh sách
-      currentPage = 1;
-      renderRecipes(filteredRecipes);
+          if (selectedNutrient === "energy") {
+            totalNutrientB +=
+              ((food.macronutrients.energy || 0) * quantity) / 100;
+          } else if (selectedNutrient === "fat") {
+            totalNutrientB += ((food.macronutrients.fat || 0) * quantity) / 100;
+          } else if (selectedNutrient === "carbohydrate") {
+            totalNutrientB +=
+              ((food.macronutrients.carbohydrate || 0) * quantity) / 100;
+          } else if (selectedNutrient === "protein") {
+            totalNutrientB +=
+              ((food.macronutrients.protein || 0) * quantity) / 100;
+          }
+        }
+      });
+
+      // Quy đổi về giá trị dinh dưỡng trên 100g
+      const valueA = totalQuantityA
+        ? (totalNutrientA / totalQuantityA) * 100
+        : 0;
+      const valueB = totalQuantityB
+        ? (totalNutrientB / totalQuantityB) * 100
+        : 0;
+
+      // Sắp xếp theo hướng được chọn
+      return sortDirection === "desc" ? valueB - valueA : valueA - valueB;
     });
+
+    sortDirection = sortDirection === "asc" ? "desc" : "asc";
+
+    // Reset trang về 1 và render lại danh sách
+    currentPage = 1;
+    renderRecipes(filteredRecipes);
+  });
 
 // hiển thị món ăn của mình
 document
-    .getElementById("checkMyRecipes")
-    .addEventListener("change", function () {
-      currentPage = 1;
-      const recipesData = JSON.parse(localStorage.getItem("recipesData"));
-      const loginAccountData = JSON.parse(
-          localStorage.getItem("loginAccountData")
+  .getElementById("checkMyRecipes")
+  .addEventListener("change", function () {
+    currentPage = 1;
+    const recipesData = JSON.parse(localStorage.getItem("recipesData"));
+    const loginAccountData = JSON.parse(
+      localStorage.getItem("loginAccountData")
+    );
+
+    if (this.checked) {
+      // Nếu checkbox được chọn, chỉ hiển thị công thức của người dùng
+      filteredRecipes = recipesData.filter(
+        (recipe) => recipe.author === loginAccountData.username
       );
-
-      if (this.checked) {
-        // Nếu checkbox được chọn, chỉ hiển thị công thức của người dùng
-        filteredRecipes = recipesData.filter(
-            (recipe) => recipe.author === loginAccountData.username
-        );
-        if (filteredRecipes.length === 0) {
-          Swal.fire({
-            title: "Chưa có công thức?",
-            text: "Thêm công thức riêng của bạn ngay!",
-            icon: "question",
-          });
-          setTimeout(function () {
-            window.location.href = "addRecipe.html";
-          }, 1500);
-        }
-      } else {
-        searchNameCategory();
-        return;
+      if (filteredRecipes.length === 0) {
+        Swal.fire({
+          title: "Chưa có công thức?",
+          text: "Thêm công thức riêng của bạn ngay!",
+          icon: "question",
+        });
+        setTimeout(function () {
+          window.location.href = "addRecipe.html";
+        }, 1500);
       }
+    } else {
+      searchNameCategory();
+      return;
+    }
 
-      renderRecipes(filteredRecipes);
-    });
+    renderRecipes(filteredRecipes);
+  });
