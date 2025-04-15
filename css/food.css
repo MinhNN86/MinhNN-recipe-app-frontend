@@ -383,7 +383,7 @@
   font-size: 14.3px;
 }
 
-.modal .value input {
+.modal input {
   height: 100%;
   display: flex;
   align-items: center;
@@ -391,6 +391,11 @@
   border: none;
   background-color: #eeeeee;
   color: #676a6c;
+}
+
+.modal .value .changeInput {
+  background-color: #FFFFFF;
+  border: 1px solid #EEEEEE;
 }
 
 .modal .weightValue {
@@ -492,6 +497,11 @@
   border: none;
   background-color: #eeeeee;
   color: #676a6c;
+}
+
+.info4 .changeInput {
+  background-color: #FFFFFF;
+  border: 1px solid #EEEEEE;
 }
 
 .cancelSave {
