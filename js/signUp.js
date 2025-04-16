@@ -95,10 +95,11 @@ document.getElementById("btn-singUp").addEventListener("click", function () {
       window.location.href = "signIn.html";
     }, 2000);
   } else {
-    document.getElementById("inputEmail").value = "";
-    document.getElementById("inputUsername").value = "";
-    document.getElementById("inputPassword").value = "";
-    document.getElementById("inputConfirmPassword").value = "";
+    // Không reset giá trị input khi nhập sai
+    // document.getElementById("inputEmail").value = "";
+    // document.getElementById("inputUsername").value = "";
+    // document.getElementById("inputPassword").value = "";
+    // document.getElementById("inputConfirmPassword").value = "";
     error.style.display = "flex";
     showNotification(error);
 
